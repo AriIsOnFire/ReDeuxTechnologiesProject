@@ -1,3 +1,7 @@
 --Readme--
+PROGRAMMING: Ari and Noodle
+ART: Noodle
 
-This is the readme for your ghost. I would highly recommend writing your own readme file in here. Information you might want to include would be your name, your site, the characters you're using, features they may have, places you can be contacted, hotkeys they have set, what kind of conversations they have, or anything else like that that you think your user might like to know.
+Welcome to the YAYA version of the Tord Ghost! We loved making the original in Kawari for the jam, but for a lot of the stuff we wanted to do after, we figured it'd be easier in YAYA. As such, this is essentially Tord TWO! POINT! OH!!!
+
+You can expect a lot more from this version of Tord than from the Jam Version, as we had a lot more time and a lot more knowledge going into this! 

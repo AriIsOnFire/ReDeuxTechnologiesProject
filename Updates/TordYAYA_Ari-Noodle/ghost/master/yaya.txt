@@ -14,16 +14,16 @@ charset.extension, UTF-8
 //I would recommend adding the initials of your ghost to the front of your .dic files, such as hs_string or hs_bootend, particularly if you're going to be editing multiple ghosts at once, or studying other ghost's files to see how they work. It'll help you keep the files straight in Notepad++. You don't have to though, that's optional. If you do, make sure to change the filenames here too, so if you changed the filename to hs_string, make sure you come back here and change the line here to dic,hs_string.
 
 dicdir, yaya_base		
-dic, string.dic			
-dic, aitalk.dic			
-dic, bootend.dic		
-dic, mouse.dic			
-dic, etc.dic			
-dic, menu.dic
-dic, word.dic
-dic, commu.dic
-dic, nameteach.dic
-dic, anchor.dic
+dic, TRL_string.dic			
+dic, TRL_aitalk.dic			
+dic, TRL_bootend.dic		
+dic, TRL_mouse.dic			
+dic, TRL_etc.dic			
+dic, TRL_menu.dic
+dic, TRL_word.dic
+dic, TRL_commu.dic
+dic, TRL_nameteach.dic
+dic, TRL_anchor.dic
 
 //---- Log Location -------------------------------------------------------------------------
 //I'm not entirely sure what this does, but basically don't touch it.
