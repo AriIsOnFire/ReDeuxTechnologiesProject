@@ -18,7 +18,7 @@ charset.extension, UTF-8
 //These are the .dic files your ghost will be using when in emergency mode.
 
 dicdir, yaya_base		
-dic, emerg.dic
+dic, TRL_emerg.dic
 
 
 
