@@ -76,7 +76,7 @@ OnChangeName : all
 
 	if _step == 1
 	{
-		if _changeType == "add" || _changeType == "replace"
+		if _changeType == "add" || _changeType == "replace" || firstboot == 1
 		{
 			"\t\*\![enter,nouserbreakmode]\![open,inputbox,OnChangeNameInput,--timeout=-1,--reference=%(_changeType),--reference=2]"
 			"What name would you like me to call you?"
@@ -104,6 +104,13 @@ OnChangeName : all
 			usernameArray = _newName
 			"Got it. I'll call you %(_newName) from now on."
 		} 
+		elseif firstboot == 1
+		{
+			usernameArray = _newName
+			firstboot = 0
+			"Awesome. We've got your name set up! Now you're %(_newName), but if you ever wanna change it or add other names you can tell me in the config menu."
+			
+		}
 		else
 		{
 			foreach usernameArray; _name
@@ -162,100 +169,4 @@ OnChangeNameInput : all
 	{
 		"\![raise,OnChangeName,%(_changeType),%(_step),%(_newName)]"
 	}
-}
-
-OnNameTeach
-{
-	tempname = reference0 //this stores the name value from reference0 in tempname
-	
-	
-	reference0 = TOLOWER(reference0) //changes it to lowercase
-	reference0 = REPLACE(reference0," ","") //removes spaces
-	reference0 = REPLACE(reference0,".","") //removes periods
-	reference0 = REPLACE(reference0,"-","") //removes dashes
-	
-	
-	if reference0 == "Tord"
-	{
-		"\0\s[0]That's my name... That might be confusing. You should try again.\![open,inputbox,OnNameTeach,-1]"
-		//Note here that it's using the same tag as above to reopen the text box to let the user put in another name.
-	}
-	elseif reference0 == "Tom", "Edd", "Matt", "Paul", "Patryck"
-	{
-		username = tempname
-		"\0\s[0]Eh? Same name as someone I know, then.\e"
-	}
-	elseif reference0 == "" //This is if the user doesn't put in a name at all, since that'd also get awkward in dialogue.
-	{
-		username = "Stranger"
-		
-		"\0\s[0]Nothin, huh? Stranger it is.\e"
-	}
-	else //if the user put in something not specified above, ie a proper name the ghost can use. 
-	{
-		username = tempname
-		"\0\s[0]You're now called %(username).\e"
-		
-	}
-}
-	
-Select.titlenone
-{
-		username = tempname
-		NameDone
-}
-
-Select.titlemr
-{
-		username = "Mr. " + tempname
-		NameDone
-}
-
-Select.titlemaster
-{
-		username = "Master " + tempname
-		NameDone
-}
-		
-Select.titlems
-{
-		username = "Ms. " + tempname
-		NameDone
-}
-
-Select.titlelady
-{
-		username = "Lady " + tempname
-		NameDone
-}
-
-Select.titlessi
-{
-		username = tempname + "-ssi"
-		NameDone
-}
-
-Select.titlesan
-{
-		username = tempname + "-san"
-		NameDone
-}
-
-//--NameDone
-//This is the final bit of dialogue your ghosts will have when the user changes their name and adds a title above. There is a special section here for when the user first boots the ghost, if you uncommented that in bootend.dic. If you aren't doing either of those things, then you can ignore this.
-
-NameDone
-{
-	if firstboot == 1 //this checks for the flag that was set during the firstboot sequence
-	{
-		firstboot = 0 //this turns the flag off
-		
-		//This dialogue will display the first time the user puts in their name. You might want to add some closing thoughts to the introduction your ghost had in OnFirstBoot, or directions about how to use the ghost, or something like that. It's up to you!
-		"\0\s[0]Name input for the first time.\e"
-	}
-	else
-	{
-		"\0\s[0]The user is now called %(username). This should not be called.\e"
-		//Rewrite this as you like. Note the %(username) tag here, as you should be well familiar with by now from the walkthrough and the other .dic files. That will display the name the user just created.
-	}	
 }

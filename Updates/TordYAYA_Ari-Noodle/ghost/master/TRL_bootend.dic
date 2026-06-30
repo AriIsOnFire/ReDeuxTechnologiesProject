@@ -41,7 +41,6 @@ OnFirstBoot : all
 	passhour = 0
 	passmin = 0 
 	passsec = 0 // These keep track of the time.
- 	username         = "Stranger" //This sets a temporary name for the user.
 	stroke           = 0	// Sets their being-pet state to zero.
  	teachusername    = 0	// Related to them learning your name.
 	mikireflag       = 0	// Determines behavior at certain points.
@@ -50,23 +49,22 @@ OnFirstBoot : all
 	talktime = "5 minutes" //How the value aitalkinterval will display in the config menu.
 	deleteshitai = "OFF" //Sets whether or not the user can uninstall the ghost to "OFF". The user can change it later in the config menu (see menu.dic). 
 	nowshell = "master" //This is for a special if check in aitalk.dic to see what shell the ghost is using. You should use the name of your default shell folder here.
-	//firstboot = 1 //This marks that this is the first time you've run the ghost. It's so it won't reroute to general name changing dialogue when the user inputs their name. Uncomment this if you're going to have your ghost ask the user directly when they're first booted for the user's name.
+	firstboot = 1 //This marks that this is the first time you've run the ghost. It's so it won't reroute to general name changing dialogue when the user inputs their name. Uncomment this if you're going to have your ghost ask the user directly when they're first booted for the user's name.
 	
 	if reference0 == 0 
  	{
 		//Make sure to set up poses for both characters right when you start, otherwise one will be invisible until they speak.
 		
-		"\1\s[10]\0\s[0]Placeholder. Pronouns. \e"
+		"\1\s[10]\0\s[0]Placeholder. Pronouns. \n\n[half]"
 		
 		
 		//*********************Advanced User Info*******************************
 		
 		//If you want to directly add the option for the user to give their name and pronouns, you can uncomment and add this text below to the above.
-	
-		// "Now we're going to ask the user the first question about themselves, namely what pronouns they want us to use.\w8\0\s[0]\n\n[half]This will let us construct grammatically correct sentences referring to the user later.\x\w8\1\c\s[10]How should we refer to you, user?\n\n[half]"
-		// "\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n"
-		// "\![*]\q[She/Her/Hers,choicefirstsheher]\n"
-		// "\![*]\q[They/Them/Their,choicefirsttheythem]\e"
+
+		 "\w5\_q\![*]\q[He/Him/His,choicefirsthehim]\n"
+		 "\![*]\q[She/Her/Hers,choicefirstsheher]\n"
+		 "\![*]\q[They/Them/Their,choicefirsttheythem]\e"
 		
 		//If you do include this, see the "Name/Pronouns" section below.
 		//***********************************************************************
@@ -130,7 +128,7 @@ Select.choicefirsttheythem
 NameInput
 {
 	
-	"\1\s[10]\0\s[0]Its name time. place holder.\![open,inputbox,OnNameTeach,-1]\e"
+	"\1\s[10]\0\s[0]Its name time. place holder.\![open,inputbox,OnChangeName,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it.
 	
