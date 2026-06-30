@@ -1,290 +1,1990 @@
-//---------------------------Surfaces.txt--------------------------
-//Surfaces.txt is the backbone of the shell you make for your ghost. 
-
-//MAKE SURE ALL YOUR IMAGES ARE THE SAME SIZE. The image dimensions just need to be consistent throughout for each character, because believe me, it will make things MUCH, MUCH easier for you from this point on if you do that.
-
-//ONE MORE NOTE - If you are planning on doing a single person ghost without a sidekick character at all, all you have to do is save a blank png over all the files for the secondary character, ESPECIALLY Surface10.png. Don't delete Surface10.png or Surface10 in general.
-
-
-
-//--The Main Character's Poses---------------------------------------------------------
-
-surface0
-//surface0 is the basic default pose for your main character.
+descript
 {
-collision0,57,22,112,46,Head
-collision1,65,50,105,91,Face
-
-//Collisions define "hot spots" on your ghost where the user can pet or double click them (as defined in mouse.dic).
-//The four numbers after that are x/y coordinates. Specifically, the first two numbers are the x/y coordinates of the TOP LEFT corner of your hotspot. The third and fourth numbers are the coordinates of the BOTTOM RIGHT corner of the hotspot.
-//After that, you have to name the area you highlighted. In collision0's case, the area is named "Head". If you go into mouse.dic, you'll see that this name is referenced when the mouse is over that area or interacting with it.
-
-//Collisions only apply to the Surface they're in, unless they're appended using surface.append at the bottom of this file. 
-
-
-//--Blinking---------------------------------------------------------------------------
-//Here's the animation block to set up a random blink.
-
-0interval,random,4
-0pattern0,-1,10,overlay,0,0
-0pattern1,1002,5,overlayfast,0,0
-0pattern2,1001,10,overlayfast,0,0
-0pattern3,-1,3,overlay,0,0
-
-//--Talking-----------------------------------------------------------------------------
-//This block deals with your ghost's mouth moving as it speaks to you. 
-
-1interval,talk,4
-1pattern0,0,0,alternativestart,[2.3.4]
-
-//The interval is set to talk,4, which means it'll run for every four characters or so that appear in the balloon.
-
-2interval,never
-2pattern0,1102,10,overlay,0,0
-2pattern1,1101,13,overlay,0,0
-2pattern2,-1,10,overlay,0,0
-
-3interval,never
-3pattern0,1101,14,overlay,0,0
-3pattern1,-1,10,overlay,0,0
-
-4interval,never
-4pattern0,1102,14,overlay,0,0
-4pattern1,-1,10,overlay,0,0
-
-//IMPORTANT NOTE: IF YOU'RE DOING A PROFILE VIEW AND YOUR MOUTH IS MOVING OUTSIDE THE BODY then you're going to need to use Replace instead. I'm sorry for your loss.
+  version,1
 }
 
-//Main Character Embarrassed pose
+//--LIST OF SURFACES
+
+//1000-1099 legs
+//1100-1199 weird poses
+//1200-1299 body
+//1300-1399 mouth
+//1400-1499 eyes
+//1500-1599 animated
+//1600-1699 Arm L
+//1700-1799 Arm R
+//1800-1899 Misc
+
+//--ANIMATION LIST
+//im putting a BUNCH OF ROOM IN CASE AFTER THE JAM I ACTUALLY LOSE IT --Noodle 24/06
+//10-59   body
+//60-99   mouth
+//100-199 eyes
+//200-250 blinking, talking
+//300-399 Arm L
+//400-499 Arm R 
+//500-599 Misc
+
+
+
+
+
+//--Standing
+surface0
+{
+element0,overlay,surface0.png,0,0
+
+//--Collision 
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+
+//--LEGS
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+
+//--BODY 
+animation10.interval,runonce
+animation10.pattern0,overlay,1200,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1214,0,0,0
+
+//--HAND LEFT
+
+//pocket (default)
+animation300.interval,runonce
+animation300.pattern0,overlay,1600,0,0,0
+
+//y'know hand
+animation301.interval,never
+animation301.pattern0,stop,300
+animation301.pattern1,overlay,1603,0,0,0
+
+//wonder hand
+animation303.interval,never
+animation303.pattern0,stop,300
+animation303.pattern1,overlay,1606,0,0,0
+
+//hand on hip
+animation304.interval,never
+animation304.pattern0,stop,300
+animation304.pattern1,overlay,1605,0,0,0
+
+//pen grip
+animation305.interval,never
+animation305.pattern0,stop,300
+animation305.pattern1,overlay,1611,0,0,0
+
+//pen finger off
+animation306.interval,never
+animation306.pattern0,stop,300
+animation306.pattern1,overlay,1612,0,0,0
+
+//pen finger on
+animation307.interval,never
+animation307.pattern0,stop,300
+animation307.pattern1,overlay,1613,0,0,0
+
+//pen click
+animation308.interval,never
+animation308.pattern0,stop,300
+animation308.pattern1,overlay,1612,0,0,0
+animation308.pattern2,overlay,1612,50,0,0
+animation308.pattern3,overlay,1613,100,0,0
+animation308.pattern4,overlay,1612,200,0,0
+
+//pen click longer
+animation309.interval,never
+animation309.pattern0,stop,300
+animation309.pattern1,overlay,1612,0,0,0
+animation309.pattern2,overlay,1612,50,0,0
+animation309.pattern3,overlay,1613,100,0,0
+animation309.pattern4,overlay,1612,500,0,0
+
+//lesbian hand
+animation310.interval,never
+animation310.pattern0,stop,300
+animation310.pattern1,overlay,1614,0,0,0
+
+//hand in hair
+animation311.interval,never
+animation311.pattern0,stop,300
+animation311.pattern1,overlay,1610,0,5,0
+
+//--HAND RIGHT
+
+//pocket (default)
+animation400.interval,runonce
+animation400.pattern0,overlay,1700,0,0,0
+
+//finger pointing up
+animation401.interval,never
+animation401.pattern0,stop,400
+animation401.pattern1,overlay,1704,0,0,0
+
+//hand on hip
+animation402.interval,never
+animation402.pattern0,stop,400
+animation402.pattern1,overlay,1707,0,0,0
+
+//notebook
+animation403.interval,never
+animation403.pattern0,stop,400
+animation403.pattern1,overlay,1708,0,0,0
+
+//hand down
+animation404.interval,never
+animation404.pattern0,stop,400
+animation404.pattern1,overlay,1703,0,20,-10
+
+//hand in hair 
+animation405.interval,never
+animation405.pattern0,stop,400
+animation405.pattern1,overlay,1706,0,20,-10
+
+//--BOTH hands but also technically left
+
+//crossed
+animation312.interval,never
+animation312.pattern0,stop,300
+animation312.pattern1,stop,400
+animation312.pattern2,overlay,1604,0,-2,-2
+
+//close
+animation313.interval,never
+animation313.pattern0,stop,300
+animation313.pattern1,stop,400
+animation313.pattern2,overlay,1607,0,-2,-2
+
+
+//clasped far
+animation314.interval,never
+animation314.pattern0,stop,300
+animation314.pattern1,stop,400
+animation314.pattern2,overlay,1608,0,-2,-2
+
+//--EYES
+
+//open (default)
+animation100.interval,runonce
+animation100.pattern0,overlay,1400,0,0,0
+
+//angry
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,overlay,1403,0,0,0
+
+//angrier
+animation102.interval,never
+animation102.pattern0,stop,100
+animation102.pattern1,overlay,1404,0,0,0
+
+//whatever
+animation103.interval,never
+animation103.pattern0,stop,100
+animation103.pattern1,overlay,1405,0,0,0
+
+//scary open
+animation104.interval,never
+animation104.pattern0,stop,100
+animation104.pattern1,overlay,1406,0,0,0
+
+//looking up
+animation105.interval,never
+animation105.pattern0,stop,100
+animation105.pattern1,overlay,1407,0,0,0
+
+//rolling eyes animation but he looks at you
+animation106.interval,never
+animation106.pattern0,stop,100
+animation106.pattern1,overlay,1403,0,0,0
+animation106.pattern2,overlay,1403,40,0,0
+animation106.pattern3,overlay,1407,60,0,0
+animation106.pattern4,overlay,1408,40,0,0
+animation106.pattern5,overlay,1405,100,0,0
+animation106.pattern6,overlay,1409,30,0,0
+animation106.pattern7,overlay,1411,70,0,0
+animation106.pattern8,overlay,1412,100,0,0
+
+//rolling eyes animation
+animation107.interval,never
+animation107.pattern0,stop,100
+animation107.pattern1,overlay,1403,0,0,0
+animation107.pattern2,overlay,1403,50,0,0
+animation107.pattern3,overlay,1407,60,0,0
+animation107.pattern4,overlay,1408,40,0,0
+animation107.pattern5,overlay,1405,100,0,0
+animation107.pattern6,overlay,1410,100,0,0
+animation107.pattern7,overlay,1409,100,0,0
+
+
+//looking away 1
+animation108.interval,never
+animation108.pattern0,stop,100
+animation108.pattern1,overlay,1409,0,0,0
+
+//looking away more closed 2
+
+animation109.interval,never
+animation109.pattern0,stop,100
+animation109.pattern1,overlay,1410,0,0,0
+
+//looking down ehh 
+animation110.interval,never
+animation110.pattern0,stop,100
+animation110.pattern1,overlay,1411,0,0,0
+
+//looking at you ehh
+animation111.interval,never
+animation111.pattern0,stop,100
+animation111.pattern1,overlay,1412,0,0,0
+
+//dumfounded
+animation112.interval,never
+animation112.pattern0,stop,100
+animation112.pattern1,overlay,1413,0,0,0
+
+//dumfounded looking away
+animation113.interval,never
+animation113.pattern0,stop,100
+animation113.pattern1,overlay,1414,0,0,0
+
+//dumfounded looking down
+animation114.interval,never
+animation114.pattern0,stop,100
+animation114.pattern1,overlay,1415,0,0,0
+
+//roblox eyes (only eyes full face is in anim)
+animation115.interval,never
+animation115.pattern0,stop,100
+animation115.pattern1,overlay,1416,0,0,0
+
+//big half eyes look away
+animation116.interval,never
+animation116.pattern0,stop,100
+animation116.pattern1,overlay,1417,0,-2,-2
+
+//big half eyes looking forward
+animation117.interval,never
+animation117.pattern0,stop,100
+animation117.pattern1,overlay,1418,0,-2,-2
+
+//big half eyes looking up
+animation118.interval,never
+animation118.pattern0,stop,100
+animation118.pattern1,overlay,1419,0,-2,-2
+
+//weired out eyes look away
+animation119.interval,never
+animation119.pattern0,stop,100
+animation119.pattern1,overlay,1422,0,2,-4
+
+//anim between these two
+animation120.interval,never
+animation120.pattern0,stop,100
+animation120.pattern1,overlay,1422,0,2,-4
+animation120.pattern2,overlay,1423,50,2,-4
+animation120.pattern3,overlay,1424,110,2,-4
+
+//weired out eyes look at you
+animation121.interval,never
+animation121.pattern0,stop,100
+animation121.pattern1,overlay,1424,0,2,-4
+
+//weirded out eyes look away
+//will do -Noodle
+//animation122
+
+//looking side to side
+//will do -Noodle
+animation123.interval,never
+animation123.pattern0,stop,100
+animation123.pattern1,overlay,1422,0,0,0
+animation123.pattern2,overlay,1422,50,0,0
+animation123.pattern3,overlay,1426,50,0,0
+animation123.pattern4,overlay,1425,70,0,0
+animation123.pattern5,overlay,1423,400,0,0
+animation123.pattern6,overlay,1422,70,0,0
+
+
+//----------------------------
+
+//force blink
+animation125.interval,never
+animation125.pattern0,stop,100
+animation125.pattern1,overlay,1427,0,0,0
+animation125.pattern2,overlay,1428,80,0,0
+animation125.pattern3,overlay,1429,200,0,0
+animation125.pattern4,overlay,1429,0,0,0
+
+//half lidded eyes
+animation126.interval,never
+animation126.pattern0,stop,100
+animation126.pattern1,overlay,1435,0,-40,5
+
+//angry eyes
+animation127.interval,never
+animation127.pattern0,stop,100
+animation127.pattern1,overlay,1439,0,10,0
+
+//wild eyes
+animation128.interval,never
+animation128.pattern0,stop,100
+animation128.pattern1,overlay,1441,0,12,0
+
+//really half lidded eyes
+animation129.interval,never
+animation129.pattern0,stop,100
+animation129.pattern1,overlay,1442,0,-2,-4
+
+//looking up
+animation130.interval,never
+animation130.pattern0,stop,100
+animation130.pattern1,overlay,1443,0,-2,-4
+
+//confused kinda
+animation131.interval,never
+animation131.pattern0,stop,100
+animation131.pattern1,overlay,1444,0,0,0
+
+//bugs when you lift up a rock
+animation132.interval,never
+animation132.pattern0,stop,100
+animation132.pattern1,overlay,1430,0,5,0
+
+//ooh yikes you messed up type shit
+animation133.interval,never
+animation133.pattern0,stop,100
+animation133.pattern1,overlay,1431,0,0,-4
+
+
+
+//--MOUTHS
+
+
+//neutral
+animation60.interval,runonce
+animation60.pattern0,overlay,1301,0,0,0
+
+//smiling 
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1300,0,0,0
+
+//roblox mouth (full thing in anim)
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1325,0,0,0
+
+//down curved
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1306,0,-30,0
+
+//teeth yikes
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1307,0,-37,3
+
+// :|
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1311,0,0,0
+
+// :| but its eddsworld
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1308,0,-37,3
+
+// :3
+animation67.interval,never
+animation67.pattern0,stop,60
+animation67.pattern1,overlay,1309,0,-40,9
+
+//but grin
+animation69.interval,never
+animation69.pattern0,stop,60
+animation69.pattern1,overlay,1324,0,-10,0
+
+//but frown
+animation70.interval,never
+animation70.pattern0,stop,60
+animation70.pattern1,overlay,1329,0,-10,0
+
+//tongue
+animation71.interval,never
+animation71.pattern0,stop,60
+animation71.pattern1,overlay,1333,0,0,0
+
+
+
+
+//--FULL FACES
+
+//roblox man face
+animation68.interval,never
+animation68.pattern0,start,115
+animation68.pattern1,start,62
+
+
+
+
+
+//--Blinking animation
+//okay, this is beyond me rn i dont want to work on the blinking rn -Noodle 24/06
+//okay nwm i will work on it today i just need to make new files for blinking im STUPIIIIID -Noodle 24/06
+//animation200.interval,random,4
+//animation200.pattern0,overlayfast,1502,50,0,0
+//animation200.pattern1,overlayfast,1503,100,0,0
+//animation200.pattern2,overlayfast,1504,30,0,0
+//animation200.pattern3,overlay,-1,30,0,0
+
+//--Talking Animation
+
+animation204.interval,talk,4
+animation204.pattern1,alternativestart,[201.202.203]
+
+animation201.interval,never
+animation201.pattern1,overlay,1500,100,0,0
+animation201.pattern2,overlay,1501,130,0,0
+animation201.pattern3,overlay,-1,100,0,0
+
+animation202.interval,never
+animation202.pattern1,overlay,1500,140,0,0
+animation202.pattern2,overlay,-1,100,0,0
+
+animation203.interval,never
+animation203.pattern1,overlay,1501,140,0,0
+animation203.pattern2,overlay,-1,100,0,0
+
+
+//--MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1800,0,0,0
+
+}
+
+//The first line tells the program what this is. To translate from code to plain language: 'animation10' "The 10th animation". "which has an interval of", "randomly choose every second", "with a 1 in 4 chance to play".
+//The next line is saying: "The 10th animation". "First image is", "Overlaid and clipped to the character", "it is surface1002", "it will be held for 50 miliseconds", "0 offset on the X", "0 offset on the Y". 
+
+
+
+
+
+
+
+//im doing a few of these for now, bc i want to play around with him a bit, let a guy have some joy and whimsy, ill remove these once i start working on coloring the surfaces -Noodle 06/20
+//added these Surfaces 1, 2, and 5 so they stopped bringing up notices. Noodle Do that Thang when you can -Ari 6/20
+
 surface1
 {
+element0,overlay,surface0.png,0,0
+//--Collision 
+collision0,64,24,189,86,Head
+collision1,92,95,174,158,Face
+collision2,130,259,190,311,Pocket	
+
+
+
+//LEGS
+
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+
+//--BODY 
+
+animation10.interval,runonce
+animation10.pattern0,overlay,1201,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1215,0,0,0
+
+//--MOUTH
+
+//--Awkward mouth
+animation60.interval,runonce
+animation60.pattern0,overlay,1305,0,0,0
+
+//Pursed lips
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1303,0,0,0
+
+//smile
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1300,0,-55,14
+
+//teeth smile
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1343,0,-55,14
+
+// :|
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1304,0,-9,-30
+
+//:/
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1313,0,-60,-5
+
+//oooohhh
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1322,0,-55,10
+
+//disturbed yikes
+animation67.interval,never
+animation67.pattern0,stop,60
+animation67.pattern1,overlay,1327,0,-55,14
+
+//mumble mumble
+animation68.interval,never
+animation68.pattern0,stop,60
+animation68.pattern1,start,69
+
+//mumble animation
+animation69.interval,never
+animation69.pattern0,stop,60
+animation69.pattern1,overlay,1330,0,-55,14
+animation69.pattern2,overlay,1331,700,-55,14
+animation69.pattern3,overlay,1330,700,-55,14
+animation69.pattern4,start,68
+
+//:p
+animation70.interval,never
+animation70.pattern0,stop,60
+animation70.pattern1,overlay,1332,0,-55,14
+
+//o
+animation71.interval,never
+animation71.pattern0,stop,60
+animation71.pattern1,overlay,1334,0,-50,6
+
+//bored looking mouth
+animation72.interval,never
+animation72.pattern0,stop,60
+animation72.pattern1,overlay,1342,0,-50,10
+
+//--EYES
+
+//--Eyes looking away
+animation100.interval,runonce
+animation100.pattern0,overlay,1401,0,0,0
+
+//--BLINKING & Talking
+
+
+//--ARM LEFT
+
+//hand in pocket (default)
+animation300.interval,runonce
+animation300.pattern0,overlay,1601,0,0,0
+
+//--ARM RIGHT
+
+//Embarassed scratching (default)
+animation400.interval,runonce+always
+animation400.pattern0,overlay,1702,0,0,0
+animation400.pattern1,overlay,1701,1000,0,0
+animation400.pattern2,overlay,1702,1000,0,0
+
+
+//--MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1801,0,0,0
+
 
 }
 
-//Main Character Surprised pose
+
+
+
+
+
+
+
+
+
+
 surface2
 {
+element0,overlay,surface0.png,0,0
+
+//--Collision 
+collision0,53,34,218,111,Head
+collision1,87,126,187,193,Face
+collision2,128,277,199,328,Pocket	
+
+
+//LEGS
+
+animation1.interval,runonce
+animation1.pattern0,overlay,1002,0,0,0
+
+//--BODY 
+
+animation10.interval,runonce
+animation10.pattern0,overlay,1202,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1216,0,0,0
+
+//--MOUTH 
+
+// :| (default)
+animation60.interval,runonce
+animation60.pattern0,overlay,1304,0,0,0
+
+//smile
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1300,0,-50,40
+
+// uhhhh
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1307,0,-80,40
+
+//:\
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1308,0,-83,37
+
+// yikes
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1312,0,-46,20
+
+// 
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1304,0,0,0
+
+// 
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1304,0,0,0
+
+
+//--EYES
+
+//weirded out eyes (default)
+animation100.interval,runonce
+animation100.pattern0,overlay,1402,0,0,0
+
+
+//--ANIMATIONS
+
+//--ARM LEFT
+
+//arm hanging (default)
+animation300.interval,runonce
+animation300.pattern0,overlay,1602,0,0,0
+
+//--ARM RIGHT
+
+//arm hanging (default)
+animation400.interval,runonce
+animation400.pattern0,overlay,1703,0,0,0
+
+//finger pointing up
+animation401.interval,never
+animation401.pattern0,stop,400
+animation401.pattern1,overlay,1704,0,-32,20
+
+//--BOTH Arms 
+
+animation301.interval,never
+animation301.pattern0,stop,400
+animation301.pattern1,stop,300
+animation301.pattern2,overlay,1604,0,-27,30
+
+//MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1802,0,0,0
+
+
+
 
 }
 
-//Main Character Worried pose
+
+
+
 surface3
 {
+element0,overlay,surface0.png,0,0
+
+//--Collision
+  
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+//LEGS
+
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+//--BODY 
+
+//default
+animation10.interval,runonce
+animation10.pattern0,overlay,1203,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1217,0,0,0
+
+//--MOUTH 
+
+//down turned (default)
+animation60.interval,runonce
+animation60.pattern0,overlay,1311,0,0,0
+
+//smile
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1300,0,0,0
+
+//smile lower
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1300,0,0,7
+
+//classic
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1301,0,0,7
+
+//nervous smile
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1302,0,0,7
+
+//teeth frown
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1312,0,0,0
+
+//:`
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1313,0,0,0
+
+//o
+animation67.interval,never
+animation67.pattern0,stop,60
+animation67.pattern1,overlay,1314,0,0,0
+
+//:p
+animation68.interval,never
+animation68.pattern0,stop,60
+animation68.pattern1,overlay,1315,0,0,0
+
+//unsure
+animation69.interval,never
+animation69.pattern0,stop,60
+animation69.pattern1,overlay,1316,0,0,0
+
+//awkward grin
+animation70.interval,never
+animation70.pattern0,stop,60
+animation70.pattern1,overlay,1317,0,0,0
+
+//open mouth
+animation71.interval,never
+animation71.pattern0,stop,60
+animation71.pattern1,overlay,1318,0,0,0
+
+//another awkward grin
+animation72.interval,never
+animation72.pattern0,stop,60
+animation72.pattern1,overlay,1319,0,0,0
+
+//yet another awkward grin
+animation73.interval,never
+animation73.pattern0,stop,60
+animation73.pattern1,overlay,1320,0,0,0
+
+//ooh
+animation74.interval,never
+animation74.pattern0,stop,60
+animation74.pattern1,overlay,1321,0,0,0
+
+//.___. mmm
+animation75.interval,never
+animation75.pattern0,stop,60
+animation75.pattern1,overlay,1322,0,0,0
+
+// _.
+animation76.interval,never
+animation76.pattern0,stop,60
+animation76.pattern1,overlay,1323,0,0,0
+
+
+//--EYES
+
+//default
+animation100.interval,runonce
+animation100.pattern0,overlay,1422,0,0,0
+
+//angry
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,overlay,1403,0,0,0
+
+//angrier
+animation102.interval,never
+animation102.pattern0,stop,100
+animation102.pattern1,overlay,1404,0,0,0
+
+//whatever
+animation103.interval,never
+animation103.pattern0,stop,100
+animation103.pattern1,overlay,1405,0,0,0
+
+//scary open
+animation104.interval,never
+animation104.pattern0,stop,100
+animation104.pattern1,overlay,1406,0,0,0
+
+//looking up
+animation105.interval,never
+animation105.pattern0,stop,100
+animation105.pattern1,overlay,1407,0,0,0
+
+//rolling eyes animation but he looks at you
+animation106.interval,never
+animation106.pattern0,stop,100
+animation106.pattern1,overlay,1403,0,0,0
+animation106.pattern2,overlay,1403,40,0,0
+animation106.pattern3,overlay,1407,60,0,0
+animation106.pattern4,overlay,1408,40,0,0
+animation106.pattern5,overlay,1405,100,0,0
+animation106.pattern6,overlay,1409,30,0,0
+animation106.pattern7,overlay,1411,70,0,0
+animation106.pattern8,overlay,1412,100,0,0
+
+//rolling eyes animation
+animation107.interval,never
+animation107.pattern0,stop,100
+animation107.pattern1,overlay,1403,0,0,0
+animation107.pattern2,overlay,1403,50,0,0
+animation107.pattern3,overlay,1407,60,0,0
+animation107.pattern4,overlay,1408,40,0,0
+animation107.pattern5,overlay,1405,100,0,0
+animation107.pattern6,overlay,1410,100,0,0
+animation107.pattern7,overlay,1409,100,0,0
+
+
+//looking away 1
+animation108.interval,never
+animation108.pattern0,stop,100
+animation108.pattern1,overlay,1409,0,0,0
+
+//looking away more closed 2
+
+animation109.interval,never
+animation109.pattern0,stop,100
+animation109.pattern1,overlay,1410,0,0,0
+
+//looking down ehh 
+animation110.interval,never
+animation110.pattern0,stop,100
+animation110.pattern1,overlay,1411,0,0,0
+
+//looking at you ehh
+animation111.interval,never
+animation111.pattern0,stop,100
+animation111.pattern1,overlay,1412,0,0,0
+
+//dumfounded
+animation112.interval,never
+animation112.pattern0,stop,100
+animation112.pattern1,overlay,1413,0,0,0
+
+//dumfounded looking away
+animation113.interval,never
+animation113.pattern0,stop,100
+animation113.pattern1,overlay,1414,0,0,0
+
+//dumfounded looking down
+animation114.interval,never
+animation114.pattern0,stop,100
+animation114.pattern1,overlay,1415,0,0,0
+
+//roblox eyes (only eyes full face is in anim)
+animation115.interval,never
+animation115.pattern0,stop,100
+animation115.pattern1,overlay,1416,0,0,0
+
+//big half eyes look away
+animation116.interval,never
+animation116.pattern0,stop,100
+animation116.pattern1,overlay,1417,0,-2,-2
+
+//big half eyes looking forward
+animation117.interval,never
+animation117.pattern0,stop,100
+animation117.pattern1,overlay,1418,0,-2,-2
+
+//big half eyes looking up
+animation118.interval,never
+animation118.pattern0,stop,100
+animation118.pattern1,overlay,1419,0,-2,-2
+
+//open
+animation119.interval,never
+animation119.pattern0,stop,100
+animation119.pattern1,overlay,1400,0,2,-4
+
+//anim between these two
+animation120.interval,never
+animation120.pattern0,stop,100
+animation120.pattern1,overlay,1422,0,2,-4
+animation120.pattern2,overlay,1423,50,2,-4
+animation120.pattern3,overlay,1424,110,2,-4
+
+//weired out eyes look at you
+animation121.interval,never
+animation121.pattern0,stop,100
+animation121.pattern1,overlay,1424,0,2,-4
+
+//weirded out eyes look away
+//will do -Noodle
+//animation122
+
+//looking side to side
+//will do -Noodle
+animation123.interval,never
+animation123.pattern0,stop,100
+animation123.pattern1,overlay,1422,0,0,0
+animation123.pattern2,overlay,1422,50,0,0
+animation123.pattern3,overlay,1426,50,0,0
+animation123.pattern4,overlay,1425,70,0,0
+animation123.pattern5,overlay,1423,400,0,0
+animation123.pattern6,overlay,1422,70,0,0
+
+
+//----------------------------
+
+//force blink
+animation125.interval,never
+animation125.pattern0,stop,100
+animation125.pattern1,overlay,1427,0,0,0
+animation125.pattern2,overlay,1428,80,0,0
+animation125.pattern3,overlay,1429,200,0,0
+animation125.pattern4,overlay,1429,0,0,0
+
+//half lidded eyes
+animation126.interval,never
+animation126.pattern0,stop,100
+animation126.pattern1,overlay,1435,0,-40,5
+
+//angry eyes
+animation127.interval,never
+animation127.pattern0,stop,100
+animation127.pattern1,overlay,1439,0,10,0
+
+//wild eyes
+animation128.interval,never
+animation128.pattern0,stop,100
+animation128.pattern1,overlay,1441,0,12,0
+
+//really half lidded eyes
+animation129.interval,never
+animation129.pattern0,stop,100
+animation129.pattern1,overlay,1442,0,-2,-4
+
+//looking up
+animation130.interval,never
+animation130.pattern0,stop,100
+animation130.pattern1,overlay,1443,0,-2,-4
+
+//confused kinda
+animation131.interval,never
+animation131.pattern0,stop,100
+animation131.pattern1,overlay,1444,0,0,0
+
+//bugs when you lift up a rock
+animation132.interval,never
+animation132.pattern0,stop,100
+animation132.pattern1,overlay,1430,0,5,0
+
+//ooh yikes you messed up type shit
+animation133.interval,never
+animation133.pattern0,stop,100
+animation133.pattern1,overlay,1431,0,0,-4
+
+
+//--ANIMATIONS
+
+//MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1803,0,0,0
+
+
+
 
 }
 
-//Main Character Sad/Disappointed pose
+
+
+
+
+
+
+
+//--POUTING
 surface4
 {
+element0,overlay,surface0.png,0,0
+
+//--Collision
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+//LEGS
+
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+//--BODY 
+
+animation10.interval,runonce
+animation10.pattern0,overlay,1204,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1218,0,0,0
+
+//--MOUTH 
+
+//pout
+animation60.interval,runonce
+animation60.pattern0,overlay,1344,0,4,-2
+
+// .__.
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1340,0,45,-3
+
+//teeth
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1335,0,34,-10
+
+// :\
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1326,0,40,-15
+
+// :\ even poutier
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1323,0,25,-5
+
+
+//--EYES
+
+//closed eyes
+animation100.interval,runonce
+animation100.pattern0,overlay,1445,0,0,0
+
+//one eye open
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,overlay,1446,0,0,0
+
+//--ANIMATIONS
+
+//--ARM LEFT
+
+//arm on hip (default)
+animation301.interval,runonce
+animation301.pattern0,overlay,1605,0,0,0
+
+//arm slightly in air
+animation302.interval,never
+animation302.pattern0,stop,301
+animation302.pattern1,overlay,1606,0,0,0
+
+//--ARM RIGHT
+
+//finger in air (default)
+animation400.interval,runonce
+animation400.pattern1,overlay,1704,0,0,0
+
+//--BOTH ARMS 
+
+//crossed arms 
+animation300.interval,never
+animation300.pattern0,stop,301
+animation300.pattern1,stop,400
+animation300.pattern2,overlay,1604,0,0,0
+
+
+//--MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1804,0,0,0
+
 
 }
 
-//Main Character Smiling pose
+
+
+
+
+
+
+//--ONE LEG UP 
 surface5
 {
+element0,overlay,surface0.png,0,0
+
+//--Collision 
+collision0,169,7,299,77,Head
+collision1,179,82,270,160,Face
+collision2,166,268,233,315,Pocket	
+
+
+//--LEGS
+animation1.interval,runonce
+animation1.pattern0,overlay,1003,0,0,0
+
+//--BODY 
+
+animation10.interval,runonce
+animation10.pattern0,overlay,1210,0,0,0
+
+animation12.interval,never
+animation12.pattern0,stop,10
+animation12.pattern1,overlay,1219,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1205,0,-2,0
+animation11.pattern2,overlay,1206,10,1,0
+animation11.pattern3,overlay,1207,190,0,0
+animation11.pattern4,overlay,1208,100,0,0
+animation11.pattern5,overlay,1209,190,0,0
+animation11.pattern6,overlay,1211,150,0,0
+animation11.pattern7,overlay,1210,200,0,0
+
+//--MOUTH
+
+//smile wide (default)
+animation60.interval,runonce
+animation60.pattern0,overlay,1310,0,0,0
+
+//smile small
+animation61.interval,runonce
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1310,0,0,0
+
+
+
+
+
+
+
+//--EYES
+
+//half lidded (default)
+animation100.interval,runonce
+animation100.pattern1,overlay,1437,0,0,-8
+
+
+//hopefully eyes animation LMAO
+animation104.interval,never
+animation104.pattern0,stop,100
+animation104.pattern1,overlay,1434,0,0,0
+animation104.pattern2,overlay,1433,1000,0,0
+animation104.pattern3,overlay,1434,1000,0,0
+animation104.pattern4,start,101
+
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,start,104
+
+
+//in thought
+animation102.interval,never
+animation102.pattern0,stop,100
+animation102.pattern1,overlay,1438,0,-2,-3
+
+//irritated
+animation103.interval,never
+animation103.pattern0,stop,100
+animation103.pattern1,overlay,1439,0,50,-8
+
+
+//--HAND LEFT
+
+//behind body (default)
+animation300.interval,runonce
+animation300.pattern0,overlay,1609,0,0,0
+
+
+//--HAND RIGHT
+
+//behind body (default)
+animation400.interval,runonce
+animation400.pattern0,overlay,1705,0,0,0
+
+
+
+//--BOTH hands but also technically left
+
+//linked down
+animation302.interval,never
+animation302.pattern0,stop,300
+animation302.pattern1,stop,400
+animation302.pattern2,overlay,1607,0,-2,-2
+
+//linked up
+animation303.interval,never
+animation303.pattern0,stop,300
+animation303.pattern1,stop,400
+animation303.pattern2,overlay,1608,0,-2,-2
+
+//one thats both 302 & 303
+
+
+//--MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1805,0,0,0
+
+//blush 2
+animation501.interval,never
+animation501.pattern0,overlay,1806,0,0,0
 
 }
 
-//Main Character Contented pose
+
+
+
+
+
 surface6
 {
+//element0,overlay,surface0.png,0,0
 
+//--Collision 
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+//LEGS
+
+//animation1.interval,runonce
+//animation1.pattern0,overlay,1002,0,0,0
+
+//--BODY 
+
+//animation10.interval,runonce
+//animation10.pattern0,overlay,1202,0,0,0
+
+//--MOUTH 
+
+//--EYES
+
+//--ANIMATIONS
+
+//--ARM LEFT
+
+//--ARM RIGHT
+
+//--BOTH Arms 
+
+//--MISC
+
+//blush
+//animation.500.interval,never
+//animation500.pattern0,overlay,1800,0,0,0
 }
 
-//Main Character Angry pose
+
+
+
+
+
 surface7
 {
+element0,overlay,surface0.png,0,0
+
+//--Collision 
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+
+//--LEGS
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+
+//--BODY 
+animation10.interval,runonce
+animation10.pattern0,overlay,1212,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1220,0,0,0
+
+//--MOUTH 
+
+//grrrr (default)
+animation60.interval,runonce
+animation60.pattern0,overlay,1339,0,0,0
+
+//smile
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1300,0,-10,0
+
+//
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1301,0,-10,0
+
+//
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1302,0,-10,0
+
+//
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1306,0,-43,0
+
+//
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1307,0,-48,0
+
+//
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1308,0,-48,0
+
+//
+animation67.interval,never
+animation67.pattern0,stop,60
+animation67.pattern1,overlay,1309,0,-48,10
+
+//SUCH A WIDE SMILE
+animation68.interval,never
+animation68.pattern0,stop,60
+animation68.pattern1,overlay,1310,0,-44,7
+
+//
+animation69.interval,never
+animation69.pattern0,stop,60
+animation69.pattern1,overlay,1311,0,-10,0
+
+//
+animation70.interval,never
+animation70.pattern0,stop,60
+animation70.pattern1,overlay,1312,0,-10,-10
+
+//
+animation71.interval,never
+animation71.pattern0,stop,60
+animation71.pattern1,overlay,1313,0,-10,-10
+
+//
+animation72.interval,never
+animation72.pattern0,stop,60
+animation72.pattern1,overlay,1314,0,-14,-4
+
+//
+animation73.interval,never
+animation73.pattern0,stop,60
+animation73.pattern1,overlay,1316,0,-8,0
+
+//
+animation74.interval,never
+animation74.pattern0,stop,60
+animation74.pattern1,overlay,1317,0,-8,0
+
+//
+animation75.interval,never
+animation75.pattern0,stop,60
+animation75.pattern1,overlay,1318,0,-9,-4
+
+//
+animation76.interval,never
+animation76.pattern0,stop,60
+animation76.pattern1,overlay,1319,0,-9,-4
+
+//
+animation77.interval,never
+animation77.pattern0,stop,60
+animation77.pattern1,overlay,1320,0,-8,0
+
+//
+animation78.interval,never
+animation78.pattern0,stop,60
+animation78.pattern1,overlay,1321,0,-6,-19
+
+//
+animation79.interval,never
+animation79.pattern0,stop,60
+animation79.pattern1,overlay,1328,0,-11,0
+
+//
+animation80.interval,never
+animation80.pattern0,stop,60
+animation80.pattern1,overlay,1326,0,-11,0
+
+//
+animation81.interval,never
+animation81.pattern0,stop,60
+animation81.pattern1,overlay,1335,0,-11,0
+
+//
+animation82.interval,never
+animation82.pattern0,stop,60
+animation82.pattern1,overlay,1336,0,-11,0
+
+//
+animation83.interval,never
+animation83.pattern0,stop,60
+animation83.pattern1,overlay,1337,0,-11,0
+
+//
+animation84.interval,never
+animation84.pattern0,stop,60
+animation84.pattern1,overlay,1338,0,-11,0
+
+//
+animation85.interval,never
+animation85.pattern0,stop,60
+animation85.pattern1,overlay,1340,0,0,0
+
+//
+animation86.interval,never
+animation86.pattern0,stop,60
+animation86.pattern1,overlay,1341,0,0,0
+
+//
+animation87.interval,never
+animation87.pattern0,stop,60
+animation87.pattern1,overlay,1342,0,-11,0
+
+
+//--EYES
+
+//default
+animation100.interval,runonce
+animation100.pattern0,overlay,1439,0,0,0
+
+//
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,overlay,1440,0,0,0
+
+//
+animation102.interval,never
+animation102.pattern0,stop,100
+animation102.pattern1,overlay,1441,0,0,0
+
+//--ANIMATIONS
+
+
+
+//--ARM LEFT
+
+animation300.interval,runonce
+animation300.pattern0,overlay,1610,0,0,0
+
+
+
+//--ARM RIGHT
+
+animation400.interval,runonce
+animation400.pattern0,overlay,1706,0,0,0
+
+
+
+//--BOTH Arms 
+
+
+
+//--MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1807,0,0,0
+
 
 }
 
-//Main Character Thoughtful Pose
+
 surface8
 {
+//element0,overlay,surface0.png,0,0
+
+//--Collision
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+//LEGS
+
+//animation1.interval,runonce
+//animation1.pattern0,overlay,1002,0,0,0
+
+//--BODY 
+
+//animation10.interval,runonce
+//animation10.pattern0,overlay,1202,0,0,0
+
+//--MOUTH 
+
+//--EYES
+
+//--ANIMATIONS
+
+//--ARM LEFT
+
+//--ARM RIGHT
+
+//--BOTH Arms 
+
+//MISC
+
+//blush
+//animation500.interval,never
+//animation500.pattern0,overlay,1800,0,0,0
+
 
 }
 
-//Main Character Bored pose
+
 surface9
 {
+element0,overlay,surface0.png,0,0
+
+
+//--Collision
+collision0,123,12,261,97,Head
+collision1,143,81,229,152,Face
+collision2,142,264,224,318,Pocket
+
+
+//--LEGS
+animation1.interval,runonce
+animation1.pattern0,overlay,1001,0,0,0
+
+
+//--BODY 
+animation10.interval,runonce
+animation10.pattern0,overlay,1213,0,0,0
+
+animation11.interval,never
+animation11.pattern0,stop,10
+animation11.pattern1,overlay,1221,0,0,0
+
+//--MOUTH 
+
+//smile (default)
+animation60.interval,runonce
+animation60.pattern0,overlay,1300,0,-10,0
+
+//grrr
+animation61.interval,never
+animation61.pattern0,stop,60
+animation61.pattern1,overlay,1339,0,0,0
+
+//
+animation62.interval,never
+animation62.pattern0,stop,60
+animation62.pattern1,overlay,1301,0,-10,0
+
+//
+animation63.interval,never
+animation63.pattern0,stop,60
+animation63.pattern1,overlay,1302,0,-10,0
+
+//
+animation64.interval,never
+animation64.pattern0,stop,60
+animation64.pattern1,overlay,1306,0,-43,0
+
+//
+animation65.interval,never
+animation65.pattern0,stop,60
+animation65.pattern1,overlay,1307,0,-48,0
+
+//
+animation66.interval,never
+animation66.pattern0,stop,60
+animation66.pattern1,overlay,1308,0,-48,0
+
+//
+animation67.interval,never
+animation67.pattern0,stop,60
+animation67.pattern1,overlay,1309,0,-48,10
+
+//SUCH A WIDE SMILE
+animation68.interval,never
+animation68.pattern0,stop,60
+animation68.pattern1,overlay,1310,0,-44,7
+
+//
+animation69.interval,never
+animation69.pattern0,stop,60
+animation69.pattern1,overlay,1311,0,-13,-10
+
+//
+animation70.interval,never
+animation70.pattern0,stop,60
+animation70.pattern1,overlay,1312,0,-10,-10
+
+//
+animation71.interval,never
+animation71.pattern0,stop,60
+animation71.pattern1,overlay,1313,0,-13,-10
+
+//
+animation72.interval,never
+animation72.pattern0,stop,60
+animation72.pattern1,overlay,1314,0,-14,-4
+
+//
+animation73.interval,never
+animation73.pattern0,stop,60
+animation73.pattern1,overlay,1316,0,-10,0
+
+//
+animation74.interval,never
+animation74.pattern0,stop,60
+animation74.pattern1,overlay,1317,0,-10,0
+
+//
+animation75.interval,never
+animation75.pattern0,stop,60
+animation75.pattern1,overlay,1318,0,-11,-4
+
+//
+animation76.interval,never
+animation76.pattern0,stop,60
+animation76.pattern1,overlay,1319,0,-11,-4
+
+//
+animation77.interval,never
+animation77.pattern0,stop,60
+animation77.pattern1,overlay,1320,0,-8,0
+
+//
+animation78.interval,never
+animation78.pattern0,stop,60
+animation78.pattern1,overlay,1321,0,-8,-19
+
+//
+animation79.interval,never
+animation79.pattern0,stop,60
+animation79.pattern1,overlay,1328,0,-12,0
+
+//
+animation80.interval,never
+animation80.pattern0,stop,60
+animation80.pattern1,overlay,1326,0,-11,0
+
+//
+animation81.interval,never
+animation81.pattern0,stop,60
+animation81.pattern1,overlay,1335,0,-11,0
+
+//
+animation82.interval,never
+animation82.pattern0,stop,60
+animation82.pattern1,overlay,1336,0,-13,0
+
+//
+animation83.interval,never
+animation83.pattern0,stop,60
+animation83.pattern1,overlay,1337,0,-11,0
+
+//
+animation84.interval,never
+animation84.pattern0,stop,60
+animation84.pattern1,overlay,1338,0,-11,0
+
+//
+animation85.interval,never
+animation85.pattern0,stop,60
+animation85.pattern1,overlay,1340,0,0,0
+
+//
+animation86.interval,never
+animation86.pattern0,stop,60
+animation86.pattern1,overlay,1341,0,0,0
+
+//
+animation87.interval,never
+animation87.pattern0,stop,60
+animation87.pattern1,overlay,1342,0,-11,0
+
+
+//--EYES
+//open (default)
+animation100.interval,runonce
+animation100.pattern0,overlay,1400,0,-14,0
+
+//angry
+animation101.interval,never
+animation101.pattern0,stop,100
+animation101.pattern1,overlay,1403,0,-14,0
+
+//angrier
+animation102.interval,never
+animation102.pattern0,stop,100
+animation102.pattern1,overlay,1404,0,-14,0
+
+//whatever
+animation103.interval,never
+animation103.pattern0,stop,100
+animation103.pattern1,overlay,1405,0,-14,0
+
+//scary open
+animation104.interval,never
+animation104.pattern0,stop,100
+animation104.pattern1,overlay,1406,0,-14,0
+
+//looking up
+animation105.interval,never
+animation105.pattern0,stop,100
+animation105.pattern1,overlay,1407,0,-14,0
+
+//looking away 1
+animation108.interval,never
+animation108.pattern0,stop,100
+animation108.pattern1,overlay,1409,0,-14,0
+
+//looking away more closed 2
+
+animation109.interval,never
+animation109.pattern0,stop,100
+animation109.pattern1,overlay,1410,0,-14,0
+
+//looking down ehh 
+animation110.interval,never
+animation110.pattern0,stop,100
+animation110.pattern1,overlay,1411,0,-14,0
+
+//looking at you ehh
+animation111.interval,never
+animation111.pattern0,stop,100
+animation111.pattern1,overlay,1412,0,-14,0
+
+//dumfounded
+animation112.interval,never
+animation112.pattern0,stop,100
+animation112.pattern1,overlay,1413,0,-14,0
+
+//dumfounded looking away
+animation113.interval,never
+animation113.pattern0,stop,100
+animation113.pattern1,overlay,1414,0,-14,0
+
+//dumfounded looking down
+animation114.interval,never
+animation114.pattern0,stop,100
+animation114.pattern1,overlay,1415,0,-14,0
+
+//roblox eyes (only eyes full face is in anim)
+animation115.interval,never
+animation115.pattern0,stop,100
+animation115.pattern1,overlay,1416,0,-14,0
+
+//big half eyes look away
+animation116.interval,never
+animation116.pattern0,stop,100
+animation116.pattern1,overlay,1417,0,-14,0
+
+//big half eyes looking forward
+animation117.interval,never
+animation117.pattern0,stop,100
+animation117.pattern1,overlay,1418,0,-14,0
+
+//big half eyes looking up
+animation118.interval,never
+animation118.pattern0,stop,100
+animation118.pattern1,overlay,1419,0,-14,0
+
+//weired out eyes look away
+animation119.interval,never
+animation119.pattern0,stop,100
+animation119.pattern1,overlay,1422,0,-10,0
+
+//anim between these two
+animation120.interval,never
+animation120.pattern0,stop,100
+animation120.pattern1,overlay,1422,0,-10,0
+animation120.pattern2,overlay,1423,50,-10,0
+animation120.pattern3,overlay,1424,110,-10,0
+
+//weired out eyes look at you
+animation121.interval,never
+animation121.pattern0,stop,100
+animation121.pattern1,overlay,1424,0,-10,0
+
+//weirded out eyes look away
+//will do -Noodle
+//animation122
+
+//looking side to side
+//will do -Noodle
+animation123.interval,never
+animation123.pattern0,stop,100
+animation123.pattern1,overlay,1422,0,-10,0
+animation123.pattern2,overlay,1422,50,-10,0
+animation123.pattern3,overlay,1426,50,-10,0
+animation123.pattern4,overlay,1425,70,-10,0
+animation123.pattern5,overlay,1423,400,-10,0
+animation123.pattern6,overlay,1422,70,-10,0
+
+
+//----------------------------
+
+//force blink
+animation125.interval,never
+animation125.pattern0,stop,100
+animation125.pattern1,overlay,1427,0,-10,0
+animation125.pattern2,overlay,1428,80,-10,0
+animation125.pattern3,overlay,1429,200,-10,0
+animation125.pattern4,overlay,1429,0,-10,0
+
+//half lidded eyes
+animation126.interval,never
+animation126.pattern0,stop,100
+animation126.pattern1,overlay,1435,0,-50,5
+
+//angry eyes
+animation127.interval,never
+animation127.pattern0,stop,100
+animation127.pattern1,overlay,1439,0,0,0
+
+//wild eyes
+animation128.interval,never
+animation128.pattern0,stop,100
+animation128.pattern1,overlay,1441,0,0,0
+
+//really half lidded eyes
+animation129.interval,never
+animation129.pattern0,stop,100
+animation129.pattern1,overlay,1442,0,-15,-4
+
+//looking up
+animation130.interval,never
+animation130.pattern0,stop,100
+animation130.pattern1,overlay,1443,0,-15,-4
+
+//confused kinda
+animation131.interval,never
+animation131.pattern0,stop,100
+animation131.pattern1,overlay,1444,0,-15,0
+
+//rolling eyes animation but he looks at you
+animation106.interval,never
+animation106.pattern0,stop,100
+animation106.pattern1,overlay,1403,0,-14,0
+animation106.pattern2,overlay,1403,40,-14,0
+animation106.pattern3,overlay,1407,60,-14,0
+animation106.pattern4,overlay,1408,40,-14,0
+animation106.pattern5,overlay,1405,100,-14,0
+animation106.pattern6,overlay,1409,30,-14,0
+animation106.pattern7,overlay,1411,70,-14,0
+animation106.pattern8,overlay,1412,100,-14,0
+
+//rolling eyes animation
+animation107.interval,never
+animation107.pattern0,stop,100
+animation107.pattern1,overlay,1403,0,-14,0
+animation107.pattern2,overlay,1403,50,-14,0
+animation107.pattern3,overlay,1407,60,-14,0
+animation107.pattern4,overlay,1408,40,-14,0
+animation107.pattern5,overlay,1405,100,-14,0
+animation107.pattern6,overlay,1410,100,-14,0
+animation107.pattern7,overlay,1409,100,-14,0
+
+//--ANIMATIONS
+
+//--ARM LEFT
+
+//pen grip
+animation300.interval,runonce
+animation300.pattern0,overlay,1611,0,0,0
+
+//pen finger off
+animation301.interval,never
+animation301.pattern0,stop,300
+animation301.pattern1,overlay,1612,0,0,0
+
+//pen finger on
+animation302.interval,never
+animation302.pattern0,stop,300
+animation302.pattern1,overlay,1613,0,0,0
+
+//pen click
+animation303.interval,never
+animation303.pattern0,stop,300
+animation303.pattern1,overlay,1612,0,0,0
+animation303.pattern2,overlay,1612,50,0,0
+animation303.pattern3,overlay,1613,100,0,0
+animation303.pattern4,overlay,1612,200,0,0
+
+//pen click longer
+animation304.interval,never
+animation304.pattern0,stop,300
+animation304.pattern1,overlay,1612,0,0,0
+animation304.pattern2,overlay,1612,50,0,0
+animation304.pattern3,overlay,1613,100,0,0
+animation304.pattern4,overlay,1612,500,0,0
+
+
+//--ARM RIGHT
+
+//holding notebook
+animation400.interval,runonce
+animation400.pattern0,overlay,1708,0,0,0
+
+
+//--BOTH Arms 
+
+
+//MISC
+
+//blush
+animation500.interval,never
+animation500.pattern0,overlay,1808,0,0,0
+
 
 }
-
-
-//--The Side Character's poses------------------
-
-surface10
-{
-collision0,58,199,85,218,Face
-collision1,96,128,140,162,Point
-
-
-
-//Blinking
-0interval,random,4
-0pattern0,-1,10,overlay,0,0
-0pattern1,2002,5,overlayfast,0,0
-0pattern2,2001,10,overlayfast,0,0
-0pattern3,-1,3,overlay,0,0
-
-
-//1interval,talk,4
-//1pattern0,0,0,alternativestart,[2.3.4]
-
-//2interval,never
-//2pattern0,1102,10,overlay,0,0
-//2pattern0,1101,13,overlay,0,0
-//2pattern1,-1,10,overlay,0,0
-
-//3interval,never
-//3pattern0,1101,14,overlay,0,0
-//3pattern1,-1,10,overlay,0,0
-
-//4interval,never
-//4pattern0,1102,14,overlay,0,0
-//4pattern1,-1,10,overlay,0,0
-}
-
-
-//Side Character Embarrassed pose
-surface11
-{
-
-}
-
-//Side Character Surprised pose
-surface12
-{
-
-}
-
-//Side Character Worried pose
-surface13
-{
-
-}
-
-//Side Character Sad/Disappointed pose
-surface14
-{
-
-}
-
-//Side Character Smiling pose
-surface15
-{
-
-}
-
-//Side Character Contented pose
-surface16
-{
-
-}
-
-//Side Character Angry pose
-surface17
-{
-
-}
-
-//Side Character Thoughtful pose
-surface18
-{
-
-}
-
-//Side Character Bored pose
-surface19
-{
-
-}
-
-
-
-//--surface.append-------------------------------------------------------------------
-//Surface.append basically applies the coding within the brackets to the poses specified in the number range. Specifically in this case it applies to collisions. If the collision areas for your ghost don't change very much from pose to pose, then you can set them here for multiple surfaces at once and save yourself some time.
-
-surface.append500-590 //this is appending this code to Surface500 through Surface590.
-//surface.append500-590,205 would append the code to Surface500 to Surface590, as well as Surface205. 
-//surface.append500-590,205,!507-509 it would do the same, except it would skip Surfaces507 through 509.
-//you can have multiple surface.appends as well, if you want to append one set of code to one range of surfaces and another to another. For example, one set of collisions to your main character and one to your side character.
-{
-collision0,15,16,111,48,Face
-collision1,40,50,102,84,Point
-
-//Make sure to put surface.append at the end of your file, so it can append the values to surfaces that exist.
-
-//--bind-------------------------------------------------------------------------------
-
-//Bind is an interval function only used for dress-up items, therefore if your ghost has no dress-up items, you will not need to bind anything and can safely disregard this. See the walkthrough page about clothing for more details about bind.
-
-//51interval,bind
-//51pattern0,999,2,add,0,0
-
-//One final note on bind, note that it is also under surface.append along with the collisions up there. Meaning that this clothing would bind across those multiple surfaces just like the collisions.
-
-//You can use surface.append to technically apply anything across multiple poses, I'm pretty sure... even images. I haven't messed with this too much myself, but I'm pretty sure it's possible.
-}
-
-
-//--Unique Collision cursors------------------
-
-//sakura.cursor 
-//{ 
-//mouseup0,Head,system:hand 
-//mousedown0,Head,system:finger 
-//mouseup1,Face,system:hand 
-//mousedown1,Face,system:grip 
-//} 
-
-//What this does is change the mouse cursor. You can see it's split into mouseup and mousedown, and it uses the names you gave your Collisions up there. So when the mouse is hovering over Girl's head, it uses the system cursor that looks like a hand. When you click and hold, it looks like a finger. You can keep adding unique cursors for all your collisions by sequentially numbering them, like mouseup/down2, mouseup/down3, and so on.
-
-//The system cursors you can use for this are "arrow", "cross", "no", "hand", "grip", "finger", "wait", "text", "move", and "help".
-
-//To set this up for the secondary character, just change sakura to kero, as usual.
-
-
-//--Tooltips------------------
-
-//Maybe you'd like a tooltip to pop up when your user is hovering over a hitbox on your ghost. It works much the same as above!
-
-//sakura.tooltips 
-//{ 
-//Head,This is Girl's head. 
-//Face,This is Girl's face.  
-//}
-
-//Basically put the name of your collision first, then what you want the tooltip to say.
-//Like above, replace sakura with kero for the secondary character.
-
-
-
-//--Surface.alias------------------
-
-
-//There is another function along the same lines of surface.append and it's surface.alias. What it does is assign a range of numbers to a single number or word that can be called using \s[].
-
-//sakura.surface.alias
-//{
-//6666,[1229,1230,1231,1235]
-//}
-
-//What this means is that I could then go \s[6666] in dialogue and it would call any of these four Surfaces in the brackets. You can do words as well, like creepy,[1229,1230,1231,1235], and then you could call it with \s[creepy]. This may sound like a convenient shortcut to using words instead of numbers for your ghost's expressions, but I'd probably stick with numbers, really. It just feels like it'd backfire on you eventually.
-//You can do the same thing with the side character by using kero instead of sakura.
-
-//kero.surface.alias
-//{
-//6667,[1228,1232,1233]
-//6668,[1228,1232,1233,1234]
-//}
-//And as you can see, you can have multiple surface aliases set up at any point. In this example, kero has both 6667 and 6668 defined as a range of Surfaces. So \s[6667] would call one of those three Surfaces, and \s[6668] would call one of those four Surfaces.
-
-//---
-
-
-
-//*********************More on SERIKO coding*******************************
-
-//You can read about these on the SERIKO page on the walkthrough as well with (presumably) easier formatting on the eyes lol. Actually since this is supposed to be trimmed down I'm just going to cut the whole thing and tell you to go to the seriko page on the site.
-
-//***********************************************************************
