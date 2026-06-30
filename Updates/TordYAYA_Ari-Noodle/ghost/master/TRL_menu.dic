@@ -23,9 +23,9 @@ Test variable
 
 OpenSakuraMenu
 {
-		"\0\s[0]\b2This is the first random menu open dialogue."
-		"\0\s[0]\b2This is the second random menu open dialogue."
-		"\0\s[0]\b2This is the third random menu open dialogue."
+		"\0\s[0]\b2Hm?"
+		"\0\s[0]\b2Need something?"
+		"\0\s[0]\b2Yeah, yeah, what do you want?"
 		--
 		MenuRun
 }
@@ -52,8 +52,10 @@ MenuRun : all
 	
 	//Advanced users, you can add multiple captions for any option you add to a menu you make just like this, as long as you separate it from the other options into its own section with two dashes above and below. Note that you can't do this if the Function above has ": all" after it, since that will put every potential option in. You'll have to set it your menu up differently to take --s into account. I commented it out here because of ": all" above, but you can see the basic idea.
 	--
+	//"\![*]\q[Ask Something,questionmenu]
+	--
 	"\![*]\q[Config Menu,configmenu]\n"
-	"\![*]\q[Functions,dosomething]\n\n[half]"
+	//"\![*]\q[Functions,dosomething]\n\n[half]"
  	"\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(wd) %(nowhour):%(nowmin) %(ap), %(month)/%(day)/%(year)\e"
 }
 
@@ -126,7 +128,7 @@ TalkConfig : all
 	"\0\b[2]\_q\" 
 	
 	
-	"f[bold,1]Your name:\f[bold,0] %(username) \f[sup,1](\q[Change it?,TEACHNAME])\f[sup,0]\n"
+	"f[bold,1]Your name:\f[bold,0] %(username) \f[sup,1](\q[Change it?,OnChangeNameMenu])\f[sup,0]\n"
 	
 	
 	//If you want your user to set their pronouns, you can uncomment this menu option by removing the two slashes in front. Read more on the walkthrough about commenting.
@@ -154,8 +156,8 @@ TalkConfig : all
 }
 
 
-
-
+//WE WANT MULTIPLE PRONOUNS!!!! WE WANT CUSTOM PRONOUNS!!!
+//Will edit when i have those things
 // ______                                                 _____ _             _   
 // | ___ \                                               /  ___| |           | |  
 // | |_/ / __ ___  _ __   ___  _   _ _ __  ___   ______  \ `--.| |_ __ _ _ __| |_ 
@@ -250,7 +252,7 @@ Select.deleteoff
 
 
 
-
+//uagh
   // ____  _      _   _         _                       ____  _             _   
  // | __ )(_)_ __| |_| |__   __| | __ _ _   _          / ___|| |_ __ _ _ __| |_ 
  // |  _ \| | '__| __| '_ \ / _` |/ _` | | | |  _____  \___ \| __/ _` | '__| __|
@@ -562,7 +564,7 @@ Select.MailCheck
 
 OnChoiceTimeout
  {
-	"\0\s[0]The menu has timed out.\e"
+	"\0\s[1]Uh... Okay, then.\e"
  }
 
  
@@ -571,15 +573,12 @@ OnChoiceTimeout
 KeroMenuIntros : nonoverlap
 {
 	"\1\s[10]\b[2]"
-	"\1\s[15]\b[2]"
-	"\1\s[16]\b[2]"
+	"\1\s[10]\b[2]"
+	"\1\s[10]\b[2]"
 		
  	--
 	
-	"This is a menu introduction dialogue."
- 	"This is another menu introduction dialogue."
- 	"This is the third menu introduction dialogue."
- 	"This is the fourth menu introduction dialogue."
+	"This is not supposed to open. Whar?"
 }
 
 OpenKeroMenu : all

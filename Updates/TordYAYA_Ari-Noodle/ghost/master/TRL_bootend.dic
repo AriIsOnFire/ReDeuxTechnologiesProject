@@ -472,9 +472,9 @@ OnGhostChanged
 {
 	"\0\s[0]\1\s[10]" //this sets up their default poses
 	--
-	if reference0 == "Girl" //As above, this should be the name of your ghost as in install.txt or descript.txt.
+	if reference0 == "TORD" //As above, this should be the name of your ghost as in install.txt or descript.txt.
 	{
-		"\0\s[0]We have reloaded ourselves.\1\w8\s[10]Sure have.\e"
+		"\0\s[0]Reloaded. Everything right now?\e"
 	}
 	else //If you're switching to them from another ghost...
 	{
