@@ -80,6 +80,37 @@ lessonkor
 
 //You can also format your like this as one line separated by semicolons, but personally I think the spaced lists above look nicer. It's up to you however you want to set them up.
 
+
+movies
+{ 
+	"'Spider-Edd'"
+	"'Pink Kong'"
+	"'The Day the Earth Stood Still'"
+	"'The Evil Dead'"
+	"'Scooby Doo'"
+	"'Godzilla'"
+	"'King Kong'"
+	"'Jurassic Park'"
+	"'Tom's Tales Of Awesome'"
+	"'The Big Named Monster'"
+}
+
+games 
+{
+	"'House of the Lead'"
+	"'Fap Fap Revolution'"
+	"'Dunkee Punch'"
+	"'Super Mario Bros'"
+	"'Maniac Mansion'"
+	"'Stickfight'"
+}
+
+miss
+{
+	"my robot"
+	"my hat"
+}
+
 blanklistparagraph
 {
 	"List paragraph 1"; "List paragraph 2"; "List paragraph 3"; "List paragraph 4"; "List paragraph 5";
