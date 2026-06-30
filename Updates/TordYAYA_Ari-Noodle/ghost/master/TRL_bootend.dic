@@ -128,7 +128,7 @@ Select.choicefirsttheythem
 NameInput
 {
 	
-	"\1\s[10]\0\s[0]Its name time. place holder.\![open,inputbox,OnChangeName,-1]\e"
+	"\1\s[10]\0\s[0]It's name time. place holder.\![open,inputbox,OnChangeName,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it.
 	
@@ -204,7 +204,7 @@ OnBoot
 	if dayslot == userbirthday
 	
 	{
-				"\1\s[10]\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8Happy birthday, %(username).\e" 
+				"\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8Happy birthday, %(username).\e" 
 	}
 	
 	elseif dayslot == "6month 6day" //Like above, this if statement is checking the date. It's looking for the sixth month and the sixth day. You can change these to any day or month you want.
@@ -214,7 +214,7 @@ OnBoot
 	}
 	elseif dayslot == "7month 4day"
 	{
-				"\1\s[10]It's the fourth of July. Apparently.\e"
+				"\0\s[0]It's the fourth of July. Apparently.\e"
 	}
 	else
 	{
@@ -238,7 +238,7 @@ normalboottalk
 	//*********************Advanced User Info*******************************
 	//cindysuke set up a system where you can have your ghost check for certain days or times of day and have dialogue corresponding to that when they boot up! If you're interested, you'll want to add the following into normalboottalk:
 	
-	
+	//Do We wanna do this? I kinda wanna do this.
 	
 	// if weekday == 6 && hour >= 19 //This checks if the weekday equals six, meaning saturday AND (using the && operator) if the hour is past 19. You can change these numbers or values to anything you like! As such you can check any combination of date and day and time for potential boot dialogue. You can also add more elseif checks for other days if you want.
 		// {
@@ -428,7 +428,7 @@ OnClose
 
  OnWindowStateMinimize
  {
-	"\0\s[0]This dialogue means we're being minimized.\w8\1\s[10]Gonna get tiny for a bit.\e"
+	"\0\s[0]ACK WAIT DONT COMPRESS ME-\w4\e"
 }
 
 
@@ -438,7 +438,7 @@ OnClose
 
 OnWindowStateRestore
  {
-	"\0\s[0]This dialogue means we were minimized.\w8\1\s[10]Then brought back up.\e"
+	"\0\s[0]Big again... Thank god.\e"
 }
 
 
@@ -449,13 +449,13 @@ OnWindowStateRestore
  
 OnGhostChanging
  {
-	if reference0 == "Girl" //Replace this with the name of your Sakura character as you put in install.txt or descript.txt.
+	if reference0 == "Tord" //Replace this with the name of your Sakura character as you put in install.txt or descript.txt.
 	{
-		"\0\s[0]This dialogue is for us reloading ourselves.\w8\w8\e"
+		"\0\s[0]This dialogue is for reloading.\w8\w8\e"
 	}
  	else //If you're switching to another Ghost.
 	{
-		"\0\s[0]This dialogue means we are switching to %(reference0).\w8\1\s[10]Bye.\w8\w8\e"
+		"\0\s[0]This dialogue means we are switching to %(reference0).\w8Bye.\w8\w8\e"
 		
 		//In OnGhostChanging, %(reference0) stores the name of the ghost being swapped to, so if you want to display what you're switching to, you can use %(reference0) as in this example.
 	}
@@ -470,14 +470,14 @@ OnGhostChanged
 {
 	"\0\s[0]\1\s[10]" //this sets up their default poses
 	--
-	if reference0 == "TORD" //As above, this should be the name of your ghost as in install.txt or descript.txt.
+	if reference0 == "Tord" //As above, this should be the name of your ghost as in install.txt or descript.txt.
 	{
 		"\0\s[0]Reloaded. Everything right now?\e"
 	}
 	else //If you're switching to them from another ghost...
 	{
-		"\1\s[10]\0\s[0]Someone switched from you to us.\e"
-
+		"\1\s[10]\0\s[0]Ah, Switched out.\e"
+//HM.
 		//Again, %(reference0) in this function is the name of the ghost in question.
 	}
 }
@@ -495,44 +495,38 @@ OnShellChanging
 	}
 	else //if you don't have any specific dialogue for a specific shell
 	{
-	"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
+	"\0\s[0]This dialogue is for changing shells.\e"
 	
-	"\0\s[0]This is another bit of dialogue for changing shells.\w8\0\s[8]I wonder how many people will actually have multiple shells?\e"
+	"\0\s[0]This is another bit of dialogue for changing shells.\e"
 	}
  }
  
  
  //--OnShellChanged
- 
+ //Perchance. We'll do other shells
  //The sister to the above, this is the dialogue after you've changed the shell.
  
 OnShellChanged
  {
- 	if reference0 == "GT Default Shell" //Again, this is the name of your shell as you put in the descript.txt file for that shell.
+ 	if reference0 == "Master" //Again, this is the name of your shell as you put in the descript.txt file for that shell.
  	{
  		nowshell = "master" //This is the folder name for your shell. Not the same as the above! 
 		
  		"\0\s[0]This dialogue is for switching to our default shell.\w8\1\s[18]No really, will anyone actually put in the work to use these functions?\w8\0\s[9]\n\n[half]Shh.\e"
  	}
- 	elseif reference0 == "Hypothetical Shell that doesn't actually exist"
+ 	elseif reference0 == "Ari Style Shell"
  	{
  		nowshell = "totallyrealshell"
 		
  		"\0\s[0]This dialogue is for switching to that hypothetical shell.\e"
 		
- 		"\0\s[0]This is another bit of dialogue for switching to this hypothetical shell.\w8\1\s[18]Man if you actually use this, you should tell Zar, it'll blow her mind.\w8\0\n\n[half]\s[9]Shut up, we're not supposed to be in-character here.\e"
- 	}
- 	elseif reference0 == "Another totally real shell wow"
- 	{
- 		nowshell = "thiswouldbesomuchwork"
-		
- 		"\1\s[10]This dialogue is after we've switched to another totally real shell.\e"
+ 		"\0\s[0]This is another bit of dialogue for switching to this hypothetical shell.\w8\0\s[0]Man if you actually use this, you should tell Zar, it'll blow her mind.\w8\0\n\n[half]\s[9]Shut up, we're not supposed to be in-character here.\e"
  	}
  	else //For any shell without a specific name, or if you don't want to bother with individual responses to a shell.
  	{
 	"\0\s[0]This dialogue is after we've changed our shell to %(reference[0]).\w8\1\s[18]How many shells you got?\e"
 	
-	//Note the %(reference[0]) here! This time that should store the name of whatever shell you're switching to.
+	//%(reference[0]) = The Shell Name.
 	}
  }
 
@@ -540,7 +534,7 @@ OnShellChanged
  //--OnDressupChanged
  
  //This runs whenever you fiddle with their clothing via the dress-up option, if you've set any for your ghost.
-
+//I dunno if we'll do this tbh. 
 OnDressupChanged
 {
 if reference0 == 0 //in OnDressupChanged, reference0 refers to the character, therefore this is evaluating which character in question is getting dressed up. 0 is the main character, as you know from the walkthrough by now.
