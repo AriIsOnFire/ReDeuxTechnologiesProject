@@ -41,7 +41,7 @@ OnFirstBoot : all
 	passhour = 0
 	passmin = 0 
 	passsec = 0 // These keep track of the time.
- 	username         = "USER" //This sets a temporary name for the user.
+ 	username         = "Stranger" //This sets a temporary name for the user.
 	stroke           = 0	// Sets their being-pet state to zero.
  	teachusername    = 0	// Related to them learning your name.
 	mikireflag       = 0	// Determines behavior at certain points.
@@ -56,7 +56,7 @@ OnFirstBoot : all
  	{
 		//Make sure to set up poses for both characters right when you start, otherwise one will be invisible until they speak.
 		
-		"\1\s[10]\0\s[0]Hello, and welcome to the Girl and Triangle Ghost Template. \w5My name is Girl, and that's Triangle over there.\w8\1\s[10]Sup. \w8\0\s[0]\n\n[half]If you downloaded this template, you are presumably interested in making a ghost. \w5This template has been designed to help you do that. \w5Please make sure to carefully read the included readme file. \w8\1\n\n[half]\s[10]Each of the .dic files you'll be editing has a lot of commentary to guide you.\w8\0\s[0]\n\n[half]In the future, you will be replacing this dialogue with the dialogue for your own ghost. \w5This is a good place to introduce your characters.\w8\1\n\n[half]\s[10]You can have your characters banter with each other and explain how the ghost works and how to access menus.\x\c\0\s[0]More details about dialogue coding will be in the walkthrough page.\w8\1\c\s[10]You can direct the user to the config menu to set their name and pronouns by hand, or you can add the questions directly in this first boot sequence if you want. Good luck with your future ghost!\e"
+		"\1\s[10]\0\s[0]Placeholder. Pronouns. \e"
 		
 		
 		//*********************Advanced User Info*******************************
@@ -75,7 +75,7 @@ OnFirstBoot : all
  	{
 		//---- This is dialogue for when the user uninstalls the ghost for whatever reason, then reinstalls them again. You'll see this if you try to run OnFirstBoot using ![raise] without the extra 0 as mentioned above.
  		{
- 		"\1\s[10]\0\s[0]This is the OnFirstBoot dialogue if we've been uninstalled and reinstalled.\e"
+ 		"\1\s[10]\0\s[0]This is the OnFirstBoot dialogue if uninstalled then reinstalled. Rahhh.\e"
 		}
  	}
 }
@@ -130,7 +130,7 @@ Select.choicefirsttheythem
 NameInput
 {
 	
-	"\1\s[10]Now that the pronouns are set, we will ask for the user's name.\w8\0\s[0]What is your name, user? \![open,inputbox,OnNameTeach,-1]\e"
+	"\1\s[10]\0\s[0]Its name time. place holder.\![open,inputbox,OnNameTeach,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it.
 	
@@ -206,7 +206,7 @@ OnBoot
 	if dayslot == userbirthday
 	
 	{
-				"\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8\1\s[10]Happy birthday, %(username).\e" 
+				"\1\s[10]\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8Happy birthday, %(username).\e" 
 	}
 	
 	elseif dayslot == "6month 6day" //Like above, this if statement is checking the date. It's looking for the sixth month and the sixth day. You can change these to any day or month you want.
@@ -216,7 +216,7 @@ OnBoot
 	}
 	elseif dayslot == "7month 4day"
 	{
-				"\1\s[10]It's the fourth of July.\e"
+				"\1\s[10]It's the fourth of July. Apparently.\e"
 	}
 	else
 	{
@@ -232,7 +232,7 @@ normalboottalk
 {
 	"\0\s[0]Here is some boot dialogue.\e"
 	
-	"\1\s[10]Here is some more boot dialogue.\e"
+	"\0\s[0]Here is some more boot dialogue.\e"
 	
 }
 	
@@ -323,7 +323,7 @@ OnClose
 	 
 	 "\0\s[0]This is some random close dialogue.\w8\w8\-"
 	 
-	 "\1\s[0]This is another random close dialogue.\w8\w8\-"
+	 "\0\s[0]This is another random close dialogue.\w8\w8\-"
 	
  }
  
@@ -478,7 +478,7 @@ OnGhostChanged
 	}
 	else //If you're switching to them from another ghost...
 	{
-		"\1\s[10]Goodbye, %(reference0).\w8\0\s[0]Someone switched from you to us.\e"
+		"\1\s[10]\0\s[0]Someone switched from you to us.\e"
 
 		//Again, %(reference0) in this function is the name of the ghost in question.
 	}
@@ -493,13 +493,13 @@ OnShellChanging
  {
 	if reference0 == "Hypothetical Shell that doesn't actually exist" //reference0 in OnShellChanging is the name of the shell you're swapping to. It should be defined in the descript.txt file in your shell folder.
 	{
-	"\1\s[10]This dialogue is specifically for changing to this particular shell.\w8\0\w8\s[9]It totally exists.\w8\e"
+	"\0\s[0]This dialogue is specifically for changing to this particular shell.\w8\0\w8\s[9]It totally exists.\w8\e"
 	}
 	else //if you don't have any specific dialogue for a specific shell
 	{
 	"\0\s[0]This dialogue is for changing shells.\w8\1\s[10]Sure is.\w8\e"
 	
-	"\1\s[10]This is another bit of dialogue for changing shells.\w8\0\s[8]I wonder how many people will actually have multiple shells?\e"
+	"\0\s[0]This is another bit of dialogue for changing shells.\w8\0\s[8]I wonder how many people will actually have multiple shells?\e"
 	}
  }
  
