@@ -34,22 +34,38 @@ MouseMoveSakura
 	if reference4 != "" //ignore
  	{
  		stroke++ //if you move the mouse over the right areas, the stroke count will go up.
- 		if stroke >= 40 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want.
+ 		if stroke >= 50 //if the stroke count is above a certain number, the petting dialogue will kick in. You can change this number to make the petting take longer or shorter if you want.
 		{
  			stroke = 0 //resetting the stroke count
 			if reference4 == "Head" //do you remember the names of the areas you set up for your collisions in surfaces.txt? This is where you'd put in the name of your collision, such as head, face, horns, tail, ears, whatever.
  			{
-				"\0\s[0]This is some petting dialogue.\e"
-				"\0\s[0]This is some more petting dialogue.\e"
-				"\0\s[0]This is another bit of petting dialogue.\e"
+				"\0\s[2]Hey,\w8\w8\s[7]\i[80] cut that out.\e"
+				"\0\s[2]I know my hair is great.\w4.\w4.\w8\n\n[half]\s[3]\i[125]But do you realize how much hair gel I need to keep this up?\w_[400]\n\n[half]Actually,\w8\w8\w8\s[5]\i[11]\i[303]\i[101] none!\e"
+				"\0\s[3]\i[11]\i[104]Back off.\e"
+				"\0\s[3]Stop that.\e"
+				"\0\s[2]\i[11]You are real lucky theres a screen separating us.\e"
+				"\0\s[3]\i[11]Hands off.\e"
+				"\0\s[3]\i[11]\i[104]\i[65]What are you doing...?\e"
+				"\0\s[2]Is this really what you do in your free time?\e"
+				"\0\s[2]I see you sure are busy.\e"
+				"\0\s[4]\i[300]\i[62]\i[101]Let me guess.\w8.\w8.\w8 \0\s[0]\i[304]\i[402]\i[129]unemployed?\e"
+				"\0\s[2]DON\'T... touch me. stop that.\e"
+				"\0\s[3]\i[133]\[111]Anyone ever teach you of personal space? No?\e"
+				"\0\s[2]\i[2]Ugh.\e"
+				
  			}
  			elseif reference4 == "Face" //Another area set up by the collisions in surfaces.txt.
  			{
- 				"\0\s[0]This is petting dialogue for my face.\e"
- 				"\0\s[0]This is more petting dialogue for my face.\e"
- 				"\0\s[0]This is another bit of petting dialogue for my face. Well, stroking would probably be more accurate.\e"
+ 				"\0\s[2]Eh?\e"
+				"\0\s[1]\i[63]\i[500]Heh.\e"
+				"\0\s[0]\i[111]\i[66]You\'re one weird creature.\e"
+				"\0\s[1]\i[65]You have so much power at your disposal \w8\w8 \0\s[1]\i[11]\i[66]and this is how you use your time?\e"
  			}
-			
+			elseif reference4 == "Pocket" //Another area set up by the collisions in surfaces.txt.
+ 			{
+ 				"\0\s[0]\i[402]\i[310]\i[129]\i[69]Many interesting things in that pocket,\w4 eh?\e"
+ 				"\0\s[0]\i[402]\i[310]\i[129]\i[69]What\'s in here? Wouldn't you like to know computer boi.\e"
+ 			}
  		}
 	}
  	else
@@ -62,34 +78,34 @@ MouseMoveSakura
  //---- MouseMoveKero -----------------------------------------------------------------
  //MouseMoveKero is exactly like the above, except set up for your second character. 
  
-MouseMoveKero
- {
-	if reference4 != ""
- 	{
- 		stroke++
- 		if stroke >= 40
-		{
-			stroke = 0
-			if reference4 == "Face" //Put in the name of your collision area you set up for your secondary character here.
- 			{
-				"\1\s[10]This is a face touching dialogue.\e"
-				"\1\s[10]This is another face touching dialogue.\e"
-				"\1\s[10]This is yet another face touching dialogue.\e"
- 			}
-			elseif reference4 == "Point" //Like above, put in the name of another collision you set up in surfaces.txt for the secondary character.
-			{
-				"\1\s[10]This is a point touching dialogue since I don't really have a head, being a triangle.\e"
-				"\1\s[10]This is another point touching dialogue.\e"
-				"\1\s[10]This is yet another point touching dialogue.\e"
-			}	
- 		}
-	}
- 	else
-	{
+//MouseMoveKero
+ //{
+	//if reference4 != ""
+ 	//{
+ 		//stroke++
+ 		//if stroke >= 40
+		//{
+			//stroke = 0
+			//if reference4 == "Face" //Put in the name of your collision area you set up for your secondary character here.
+ 			//{
+			//	"\1\s[10]This is a face touching dialogue.\e"
+			//	"\1\s[10]This is another face touching dialogue.\e"
+			//	"\1\s[10]This is yet another face touching dialogue.\e"
+ 			//}
+			//elseif reference4 == "Point" //Like above, put in the name of another collision you set up in surfaces.txt for the secondary character.
+			//{
+			//	"\1\s[10]This is a point touching dialogue since I don't really have a head, being a triangle.\e"
+			//	"\1\s[10]This is another point touching dialogue.\e"
+			//	"\1\s[10]This is yet another point touching dialogue.\e"
+			//}	
+ 		//}
+	//}
+ 	//else
+	//{
  		// If the mouse isn't over the ghost, it'll zero out the stroke value.
-		stroke = 0
- 	}
-}
+	//	stroke = 0
+ 	//}
+//}
 
 //---- OnMouseDoubleClick -------------------------------------------------------
 //This is set up much like OnMouseMove above, except this is checking to see if the user is double clicking on the ghost. You also don't need to touch any of this. 
@@ -127,13 +143,29 @@ OnMouseDoubleClick
  
 MouseDoubleClickSakura
  {
- 	if reference4 == "Head" || reference4 == "Face" //here, this is checking to see if the user is double clicking on either the character's head OR their face, which for our purposes means they're hitting the ghost.
+ 	if reference4 == "Head"
 	{
-		"\0\s[0]This is the hitting dialogue.\w8\1\s[15]lol\w8\0\s[9]\n\n[half]Shut up.\e"
-		"\0\s[0]This is another hitting dialogue.\e"
-		"\0\s[0]This is yet another bit of text for hitting.\e"
-		"\0\s[0]This is the fourth hitting dialogue.\e"
+		"\0\s[3]Something wrong?\e"
+		"\0\s[0]\i[9]Looking for something?\e"
+		"\0\s[4]Don't ruin my hair-do!\e"
+		"\0\s[2]No touching.\e"
+		"\0\s[7]Argh! What the-\e"
  	}
+	elseif reference4 == "Face"
+	{
+		"\0\s[2]Ow.\w4.\w4.\w8?\e"
+		"\0\s[7]Argh! What the-\e"
+		"\0\s[2]What do you want???\e"
+		"\0\s[7]RRgh\e"
+		"\0\s[7]\i[11]\i[71]You\'re.\w8.\w8.\w8 just lucky my giant robot is in storage."
+
+	}
+	elseif reference4 == "Pocket"
+	{
+		"\0\s[0]Oh, this?\w8 \0\s[2]its empty. I forgot my guns at home. Crazy, I know. I love my guns.\e"
+		"\0\s[0]\i[69]\i[117]Not today, my friend\e"
+
+	}
 	else
  	{
 		//Otherwise, if the user doubleclicks somewhere else on the character, they will open their menu as detailed in menu.dic.
@@ -146,17 +178,17 @@ MouseDoubleClickSakura
  //This is just the same as MouseDoubleClickSakura above, except for your secondary character. The same principles apply, including how to make your character unhittable.
  
  
-MouseDoubleClickKero
- {
- 	if reference4 == "Face"
-	{
-		"\1\s[10]This is hitting dialogue.\w8\0\s[5]ha ha\w8\1\s[19]\n\n[half]Quiet.\e"
-		"\1\s[10]This is another hit dialogue.\e"
-		"\1\s[10]This is yet another hit dialogue.\e"
-		"\1\s[10]This is the fourth hitting dialogue.\e"
- 	}
-	else //Otherwise if you click anywhere else on Triangle's body
- 	{
-		OpenKeroMenu //This will open his menu set up in menu.dic.
-	}
- }
+//MouseDoubleClickKero
+ //{
+ 	//if reference4 == "Face"
+	//{
+	//	"\1\s[10]This is hitting dialogue.\w8\0\s[5]ha ha\w8\1\s[19]\n\n[half]Quiet.\e"
+	//	"\1\s[10]This is another hit dialogue.\e"
+	//	"\1\s[10]This is yet another hit dialogue.\e"
+	//	"\1\s[10]This is the fourth hitting dialogue.\e"
+ 	//}
+	//else //Otherwise if you click anywhere else on Triangle's body
+ 	//{
+	//	OpenKeroMenu //This will open his menu set up in menu.dic.
+	//}
+ //}
