@@ -90,7 +90,7 @@ RandomTalk : nonoverlap_pool
 	//--Chains
 	//Chain dialogue is unique. A dialogue chain consists of multiple bits of dialogue that get called in order over a period of time.
 	
-	"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
+	//"\0\s[0]This is the first part of a chained dialogue.\w8\1\s[10]Second part to come when we next speak.\e:chain=achain"
 	
 	//Note here that instead of ending the dialogue with the normal end tag of \e, it ends with \e:chain=achain. Once a dialogue has entered a chain, they won't say any other random dialogue until the chain is finished.
 	
@@ -153,7 +153,7 @@ RandomTalk : nonoverlap_pool
 	_kormean = _korean[1] //Now we make a temporary value called "_kormean", which is what will store the meaning of the Korean word. This is the second value in the array, so we can pull it out of _korean by using _korean[1].
 	
 	//Now we put it all together!
-	"\1\s[10]Here is an example of an array. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
+	//"\1\s[10]Here is an example of an array. The Korean word is %(_korword).\w8\0\s[0]The word means %(_kormean).\e"
 	
 	//As you can see here, we then use the values we set above for _korword and _kormean up there in the dialogue with %()s.
 	//The underscores in front of korword and kormean mean that the value is temporary, and will disappear when the dialogue has finished. More on this kind of thing on the coding page of the walkthrough.
@@ -164,68 +164,125 @@ RandomTalk : nonoverlap_pool
 		
 	//--Multiple Responses
 	
-	{ 
+	//{ 
+	//"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
+	//--
+	//"This is my first response."
+	//"This is my second response."
+	//-- 
+	//"\w8\0\s[0]\n\n[half]"
+	//-- 
+	//"First response to your response."
+	//"Second response to your response."
+	//-- 
+	//"\e"
+	//}
 	
-	"\0\s[0]I am asking you a generic question, Triangle. Generic question?\w8\1\s[10]"
-	--
-	"This is my first response."
-	"This is my second response."
-	"This is my third response."
-	"This is my fourth response."
-	"This is my fifth response."
-	"This is my sixth response."
-	-- 
-	"\w8\0\s[0]\n\n[half]"
-	-- 
-	"First response to your response."
-	"Second response to your response."
-	"Third response to your response."
-	"Fourth response to your response."
-	-- 
-	"\e"
-	}
+	//{
+	//"\0\s[0]Say either black or white.\w8What if I say " 
+	//-- 
+	//"green"
+	//"red"
+	//"purple"
+	//"orange"
+	//"yellow"
+	//"\s[18]magenta" 
+	//-- 
+	//" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e"
+	//}
 	
-	{
-	"\0\s[0]Say either black or white.\w8\1\s[10]What if I say " 
-	-- 
-	"green"
-	"red"
-	"purple"
-	"orange"
-	"yellow"
-	"\s[18]magenta" 
-	-- 
-	" instead?\w8\0\n\n[half]\s[9]Then you're not really cooperating.\w8\1\n\n[half]\s[15]Sounds about right.\e"
-	}
+	//"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
 	
-	"\0\s[0]\f[height,20]These words are really large.\f[height,default]\w8\1\s[10]These words are a normal size. \w8\f[height,6]These words are small.\f[height,default]\e"
-	
-	"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
+	//"\0\s[0]\f[strike,true]These words are struck out.\f[strike,default]\w8\1\s[10]\f[sub,true]These words are a subscript.\f[sub,false] \f[sup,true]These words are a superscript.\f[sup,false] \f[underline,true]These words are underlined.\f[underline,default] \f[bold,true]These words are bold.\f[bold,false] \f[italic,true]These words are italic.\f[italic,false] \f[color,186,146,112]These words are a color.\f[color,default] This tag would return to default.\f[default]\e"
 	
 	//For the \f[color] tag, the three colors listed are the RGB values of the color you want to use for your text. Change them to whatever color you want to use. \f[default] can be an easy way to quickly go back to the default word setting in your balloon after messing with colors and effects a lot.
 	
-	"\0\s[0]Here's a link to a website. \_a[http://www.website.com/]Right here.\_a\e"
+	//"\0\s[0]Here's a link \_a[http://www.website.com/]Right here.\_a\e"
 	
-	"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	//"\0\s[3]\1\s[15]\_sWe are saying this dialogue at the same time.\e" 
+	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time.
+
+	//these template ones are for reference for me rn pls dont remove im figuring things out
+
+	//****************start of the dialogues we had already in********************
+	//****************************************************************************
+
+	"\0\s[4]\i[300]Coke is awful,\w4\s[2]\i[301] I dont know how Edd can stand to drink that stuff.\e" 
+
+	"\0\s[1]\i[69]Whatever!\e" 
+
+	"\0\s[1]\i[61]What should i have for dinner today.\w4.\w4.\w8 Pork.\w4.\w4.\w4?\w8 \s[2]No,\w4 I think I ate all my bacon this morning.\w4.\w4.\w8 \s[1]\i[61]Soda?\w8 \s[0]\i[110]\i[64]Eugh.\e" 
+
+	"\0\s[5]\i[11]On Fridays,\w4 It's funny shirt day!\w8 .\w4.\w4.\w8 \0\s[1]\i[500]I can't remember who I got that from.\e"
+
+	"\0\s[1]\i[61]\f[sub,true]I wonder if he ever got rid of that stupid bear.\f[default]\e"
+
+	"\0\s[0]\i[310]\i[118]\i[402]Where did i leave my revolver...\e"
+
+	"\0\s[0]\i[68]I was in the army once, did you know?\e"
+
+	"\0\s[5]\i[11]\f[sub,true]I don't know what I've been told... \i[303]Stainless steel is hard to fold...\f[default]\e"
+
+	"\0\s[1]\i[61]Let's see.. What do I need to do after work today...\e"
 	
-	//This dialogue uses a unique tag, \_s. \_s makes it so both characters will speak the same words at the same time. Try it in Script Input to see how it works. I talk about it a little more on the walkthrough page for scripting.
+	"\0\s[0]\i[107]\f[sub,true] ...Crazy English...\f[default]\e"
+	
+	//"\0\s[1]\i[500]Hmm... I miss "${miss}"...\e"
+	
+	"\0\s[1]\i[68]I'm in your car, Edward!\e"
+	
+	"\0\s[1]I should play Maniac Mansion... I still have the deluxe edition...\e"
+	
+	"\0\s[2]Ugh. That song.\e"
+	
+	"\0\s[2]\i[301]I have to go to work.....\e"
+	
+	"\0\s[0]\i[401]\i[61]I'M EMPLOYED!!!\e"
+	
+	"\0\s[0]\i[118]And he wanted me to stay,\w4 \s[4]\i[300]pfft!\w8 As if!\w8 \s[101]I'm glad I left because,\0\s[0]\i[107]\w4 Ikke faen!\e"
+	
+	//"\0\s[1]If only I could have "${food}".\w4.\w4.\w8 mmmmmm.\w4.\w4.\w8\e"
+	
+	//"\0\s[2]I need "${food}".\e"
+	
+	//"\0\s[1]\i[61]I wonder where my copy of "${games}" is.\e"
+	
+	//"\0\s[2]Are they really planning to make a new "${movies}" movie?\e"
+	
+	//"\0\s[3]I thought that "${movies}" was better than "${movies}".\w8 Just something about it hit harder.\e"
+	
+	"\0\s[0]\i[67]Snakker du norsk?\e"
+	
+	"\0\s[0]\i[110]\i[403]\i[309]\w8\w8\w8hm\w4\w4.\![anim,clear,309]\i[308]\w4\w4.\![anim,clear,308]\i[309]\w4\w4.\![anim,clear,309]\i[308]\w8\w8\w8\![anim,clear,308]\i[305]\e"
+
+	achain
+	{{CAIN  
+    "\0\s[1]I should watch The Return of the Insane Zombie Pirates from Hell\w8.\w8.\w8.\w8\w8\e"  
+    "\0\s[0]\f[italic,true]Hell,\f[italic,false] maybe I should just rewatch the whole trilogy!\w8 I heard that they're making a new movie,\n\n[half]\w4 might as well.\e:chain=end"
+	}}CHAIN
+
+
+
+
+
+
 }
 
 
 //--Chains
 //Each chain function will go through each part of the chain in order even if it's in one function, until it goes to \e:chain=end which will end the chain, as you could probably guess. So you can put the entire chain dialogue into one place.
 
-achain
-{{CHAIN
+//achain
+//{{CHAIN
 	//this will happen the first time the chain is called
-	"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
+	//"\0\s[0]Here is the second part of the chain.\w8\1\s[10]Will there be more?\e"
 	
 	//they will then go to this dialogue next
-	"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
+	//"\0\s[0]This is the third part of chained dialogue.\1\w8\s[10]This will lead to a fourth part.\e"
 	
 	//this will be the last piece of dialogue in the chain, then they will go back to their normal dialogue
-	"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
-}}CHAIN
+	//"\0\s[0]This is the fourth piece of chained dialogue.\1\w8\s[10]This is the end.\e:chain=end"
+//}}CHAIN
 
 //Note also it ends with \e:chain=end, basically ending the chain.
 
@@ -379,7 +436,7 @@ OnSurfaceRestore
  	//}
  	//else
  	//{
-	"\0\s[0]\1\s[10]\e"
+	"\0\s[0]\e"
 	//}
  }
 

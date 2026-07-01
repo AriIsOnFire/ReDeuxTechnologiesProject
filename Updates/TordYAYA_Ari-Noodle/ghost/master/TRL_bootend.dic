@@ -55,7 +55,7 @@ OnFirstBoot : all
  	{
 		//Make sure to set up poses for both characters right when you start, otherwise one will be invisible until they speak.
 		
-		"\1\s[10]\0\s[0]Placeholder. Pronouns. \n\n[half]"
+		"\0\s[0]Finally! My machine works!-\w8\w8 Oh. Who.\w4.\w4.\w4 are you?\w8\w8\n\n[half]WHAT are you? And this tech.\w4.\w4.\w4 Hm\w4m\w4m\w4m\w4. \n\n[half]Say, do you mind if I stay here and look at the technology in your computer?\n\n[half]While I'm still not published, I'll ask for your pronouns directly,\w4 later I'll ask you in a more nonchalant way.\n\n[half]"
 		
 		
 		//*********************Advanced User Info*******************************
@@ -73,7 +73,7 @@ OnFirstBoot : all
  	{
 		//---- This is dialogue for when the user uninstalls the ghost for whatever reason, then reinstalls them again. You'll see this if you try to run OnFirstBoot using ![raise] without the extra 0 as mentioned above.
  		{
- 		"\1\s[10]\0\s[0]This is the OnFirstBoot dialogue if uninstalled then reinstalled. Rahhh.\e"
+ 		"\0\s[0]You sure can't make up your mind, can't you? Stop this nonsense, I'm dizzy.\e"
 		}
  	}
 }
@@ -128,7 +128,7 @@ Select.choicefirsttheythem
 NameInput
 {
 	
-	"\1\s[10]\0\s[0]It's name time. place holder.\![open,inputbox,OnChangeName,-1]\e"
+	"\0\s[0]I don't think I ever introduced myself, I'm Tord. Have you got a name?\![open,inputbox,OnChangeName,-1]\e"
 	
 	//At the end of this dialogue there's a tag saying "\![open,inputbox,OnNameTeach,-1]". It basically leads to the naming function defined in nameteach.dic, so don't touch it.
 	
@@ -197,14 +197,14 @@ OnBoot
 	passmin = 0
 	passsec = 0
 	
- 	"\0\s[0]\1\s[10]"
+ 	"\0\s[0]"
 
 	--
 	
 	if dayslot == userbirthday
 	
 	{
-				"\0\s[0]It's %(bornmonthprint) %(borndayprint).\w8Happy birthday, %(username).\e" 
+				"\0\s[0]It's %(bornmonthprint) %(borndayprint)!\w8Happy birthday, %(username). You're one day closer to death!\e" 
 	}
 	
 	elseif dayslot == "6month 6day" //Like above, this if statement is checking the date. It's looking for the sixth month and the sixth day. You can change these to any day or month you want.
@@ -212,9 +212,13 @@ OnBoot
 	{
 				"\0\s[0]Today is June 6th.\e"
 	}
-	elseif dayslot == "7month 4day"
+	elseif dayslot == "6month 1day"
 	{
-				"\0\s[0]It's the fourth of July. Apparently.\e"
+				"\0\s[0]It's the first day of June, do you celebrate?\e"
+	}
+	elseif dayslot == "7month 1day"
+	{
+				"\0\s[0]Is art fight still held on this day?\e"
 	}
 	else
 	{
@@ -228,17 +232,55 @@ OnBoot
 
 normalboottalk
 {
-	"\0\s[0]Here is some boot dialogue.\e"
+	"\0\s[0]Hey\e"
 	
-	"\0\s[0]Here is some more boot dialogue.\e"
-	
+	"\0\s[0]Hello,\w4\w4 old friend.\e"
+
+	"\0\s[0]Hello, again!\e"
+
+	"\0\s[2]Just another day in a war without end.\_w[500]\n\n[half]\s[9]On your desktop again?\e"
+
 }
-	
+
+//--Hes having a nice day, for now commended bc i dont  know if having these things not mentioned anywhere else will break something but i want to put them in
+//happyboottalk
+//{
+//"\0\s[2]Hello again.\e"
+
+//"\0\s[2]Hmm.. just missing my presence, aren't you?\e"
+
+//"\0\s[2]I just knew you\'d want to talk to me today <3\e"
+
+//"\0\s[2]Ah, it\'s my favorite computer, lets see what we have here today.\e"
+
+//}
+
+
+//--Hes having a bad day
+//badboottalk
+//{
+//"\0\s[2]This better be quick! \w4\w4\w4\s[9]I have unfinished business.\e"
+
+//"\0\s[2]Augh... what now?.\e"
+
+//"\0\s[2]Must you talk to me now?\e"
+
+//"\0\s[2]Why do you always feel the need to bother me?\e"
+
+// "\0\s[2]Ah, it\'s my \'favorite computer\', full of trash. Clean up for once.\e"
+
+//"\0\s[7]Hva faen!\w12\s[2]\n\n[half]oh.\e"
+//}
+
+
+
+
 	
 	//*********************Advanced User Info*******************************
 	//cindysuke set up a system where you can have your ghost check for certain days or times of day and have dialogue corresponding to that when they boot up! If you're interested, you'll want to add the following into normalboottalk:
 	
 	//Do We wanna do this? I kinda wanna do this.
+	//we should do this
 	
 	// if weekday == 6 && hour >= 19 //This checks if the weekday equals six, meaning saturday AND (using the && operator) if the hour is past 19. You can change these numbers or values to anything you like! As such you can check any combination of date and day and time for potential boot dialogue. You can also add more elseif checks for other days if you want.
 		// {
@@ -319,8 +361,11 @@ normalboottalk
 OnClose
  {
 	 
-	 "\0\s[0]This is some random close dialogue.\w8\w8\-"
-	 
+	 "\0\s[0]Be seeing you.\-"
+	 "\0\s[0]Another time.\-"
+	 "\0\s[0]Goodbye, old friend\w4.\w4.\w4.\-"
+	 "\0\s[0]Time to wrap things up.\-"
+	 "\0\s[0]Leaving so soon? \_w[500]See you.\-"
 	 "\0\s[0]This is another random close dialogue.\w8\w8\-"
 	
  }
@@ -428,7 +473,7 @@ OnClose
 
  OnWindowStateMinimize
  {
-	"\0\s[0]ACK WAIT DONT COMPRESS ME-\w4\e"
+	"\0\s[0]Ooooh what can I find in theeese files\w4\e"
 }
 
 
@@ -438,7 +483,7 @@ OnClose
 
 OnWindowStateRestore
  {
-	"\0\s[0]Big again... Thank god.\e"
+	"\0\s[0]Dang, just as i got comfortable.\e"
 }
 
 
@@ -451,11 +496,11 @@ OnGhostChanging
  {
 	if reference0 == "Tord" //Replace this with the name of your Sakura character as you put in install.txt or descript.txt.
 	{
-		"\0\s[0]This dialogue is for reloading.\w8\w8\e"
+		"\0\s[8]Reloading?\w8 \s[2]Wait hold on-\e"
 	}
  	else //If you're switching to another Ghost.
 	{
-		"\0\s[0]This dialogue means we are switching to %(reference0).\w8Bye.\w8\w8\e"
+		"\0\s[0]Who's %(reference0)?\w8 Are they also from a different world to yours? Wait I got so many questions-\w8\w8\e"
 		
 		//In OnGhostChanging, %(reference0) stores the name of the ghost being swapped to, so if you want to display what you're switching to, you can use %(reference0) as in this example.
 	}
@@ -476,7 +521,7 @@ OnGhostChanged
 	}
 	else //If you're switching to them from another ghost...
 	{
-		"\1\s[10]\0\s[0]Ah, Switched out.\e"
+		"\1\s[10]\0\s[0]Ah, so, I'm not your first choice. Got it. No hard feelings though!\e"
 //HM.
 		//Again, %(reference0) in this function is the name of the ghost in question.
 	}
