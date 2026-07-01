@@ -12,7 +12,7 @@ file,ghost/master/TRL_etc.dic668e28f0e9b34dbb26a3bd1c793c06fdsize=26717date=2
 file,ghost/master/TRL_menu.dic84860042d4e78d52df0c9df2f0434f5bsize=19987date=2026-07-01T00:07:48
 file,ghost/master/TRL_mouse.dic9c2ad046220e52d508b19d45e51d98a2size=8096date=2026-07-01T21:48:08
 file,ghost/master/TRL_nameteach.dic944a864047eaf5047d64dfcd049514f9size=5179date=2026-07-01T00:27:39
-file,ghost/master/TRL_string.dic2a08ec5893b0d892c384153fbb4587edsize=8054date=2026-07-01T22:09:12
+file,ghost/master/TRL_string.dic46d36c652aa2d528908428ccd8ad352csize=8045date=2026-07-01T22:11:01
 file,ghost/master/TRL_word.dic61b2612bad6d7308a60ad288105b0403size=3764date=2026-07-01T03:17:59
 file,ghost/master/descript.txt5e95c4bbc7f658af20dac84d26228a2fsize=2390date=2026-06-28T17:32:48
 file,ghost/master/gomi.dll51fe9597398db01e684a0f9d52c63242size=13312date=2026-06-28T17:32:48
